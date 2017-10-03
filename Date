@@ -5,10 +5,10 @@
 </head>
 <body>
 	<div id="calendrier"></div>
-
+	<div id="tab"></div>
 </body>
 <script type="text/javascript">
-	
+
 	//initialisation date du jour
 	var today = new Date(); 
 	var day = today.getDate();
@@ -18,14 +18,25 @@
 
 
 	//lendemain (C DE LA MERDE A CHANGER)
-	var nextd = new Date(today.getTime() + 24 * 60 * 60 * 1000); 
-	var dday = nextd .getDate();
-	var mmonth = nextd .getMonth()+1;
-	var yyear = nextd .getFullYear();
-	var tomorrow = dday+"/"+mmonth+"/"+yyear;
+	var nextd = today.setDate(today.getDate() +1); 
+		days = today.getDate();
+		months = today.getMonth()+1;
+		years = today.getFullYear();
+		fulls = days+"/"+months+"/"+years;
+	document.getElementById("calendrier").innerHTML = full+"<br>"+fulls;
 
-	document.getElementById("calendrier").innerHTML = full+"<br>"+tomorrow;
+	// CACA (C DE LA MERDE A CHANGER)
+	var array = new Array();
+	for (var i=1; i<= 100; i++){
 
+		nextd = today.setDate(today.getDate() +1);  
+		day = today.getDate();
+		month = today.getMonth()+1;
+		year = today.getFullYear();
+		full = day+"/"+month+"/"+year;
+		document.getElementById("tab").innerHTML += full+"<br>";
+
+	}
 	
 
 </script>
