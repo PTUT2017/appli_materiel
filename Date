@@ -5,6 +5,7 @@
 </head>
 <body>
 	<div id="calendrier"></div>
+
 </body>
 <script type="text/javascript">
 
@@ -13,9 +14,11 @@
 	var month = today.getMonth()+1;
 	var year = today.getFullYear();
 	var full = day+"/"+month+"/"+year;
-	document.getElementById("calendrier").innerHTML = full;
+	var nextd = today.getDate() + 1;
+	var tomorrow = nextd+"/"+month+"/"+year;
+	document.getElementById("calendrier").innerHTML = full+"<br>"+tomorrow;
 
-
+	
 
 </script>
 </html>
