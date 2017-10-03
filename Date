@@ -22,7 +22,6 @@
 	var dday = nextd .getDate();
 	var mmonth = nextd .getMonth()+1;
 	var yyear = nextd .getFullYear();
-	var ffull = day+"/"+month+"/"+year;
 	var tomorrow = dday+"/"+mmonth+"/"+yyear;
 
 	document.getElementById("calendrier").innerHTML = full+"<br>"+tomorrow;
