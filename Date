@@ -15,8 +15,14 @@
 	var year = today.getFullYear();
 	var full = day+"/"+month+"/"+year; // format dd/mm/yyyy
 
-	var nextd = today.getDate() + 1; //lendemain (C DE LA MERDE A CHANGER)
-	var tomorrow = nextd+"/"+month+"/"+year;
+	
+	//lendemain (C DE LA MERDE A CHANGER)
+	var nextd = new Date(today.getTime() + 24 * 60 * 60 * 1000); 
+	var dday = nextd .getDate();
+	var mmonth = nextd .getMonth()+1;
+	var yyear = nextd .getFullYear();
+	var ffull = day+"/"+month+"/"+year;
+	var tomorrow = dday+"/"+mmonth+"/"+yyear;
 	document.getElementById("calendrier").innerHTML = full+"<br>"+tomorrow;
 
 	
