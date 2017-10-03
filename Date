@@ -9,12 +9,13 @@
 </body>
 <script type="text/javascript">
 
-	var today = new Date();
+	var today = new Date(); //initialisation date aujourd'hui
 	var day = today.getDate();
 	var month = today.getMonth()+1;
 	var year = today.getFullYear();
-	var full = day+"/"+month+"/"+year;
-	var nextd = today.getDate() + 1;
+	var full = day+"/"+month+"/"+year; // format dd/mm/yyyy
+
+	var nextd = today.getDate() + 1; //lendemain (C DE LA MERDE A CHANGER)
 	var tomorrow = nextd+"/"+month+"/"+year;
 	document.getElementById("calendrier").innerHTML = full+"<br>"+tomorrow;
 
