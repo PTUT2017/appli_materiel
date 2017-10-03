@@ -17,7 +17,7 @@
 	var full = day+"/"+month+"/"+year; // format dd/mm/yyyy
 	document.getElementById("calendrier").innerHTML = full+"<br>";
 
-	// CACA (C DE LA MERDE A CHANGER)
+	// 100 jours Mettre en tableau 
 	var array = new Array();
 	for (var i=1; i<= 100; i++){
 
