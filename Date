@@ -15,15 +15,7 @@
 	var month = today.getMonth()+1;
 	var year = today.getFullYear();
 	var full = day+"/"+month+"/"+year; // format dd/mm/yyyy
-
-
-	//lendemain (C DE LA MERDE A CHANGER)
-	var nextd = today.setDate(today.getDate() +1); 
-		days = today.getDate();
-		months = today.getMonth()+1;
-		years = today.getFullYear();
-		fulls = days+"/"+months+"/"+years;
-	document.getElementById("calendrier").innerHTML = full+"<br>"+fulls;
+	document.getElementById("calendrier").innerHTML = full+"<br>";
 
 	// CACA (C DE LA MERDE A CHANGER)
 	var array = new Array();
