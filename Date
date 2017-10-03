@@ -8,8 +8,14 @@
 </body>
 <script type="text/javascript">
 
-	var date = new Date();
-	document.getElementById("calendrier").innerHTML = date;
+	var today = new Date();
+	var day = today.getDate();
+	var month = today.getMonth();
+	var year = today.getFullYear();
+	var full = day+"/"+month+"/"+year;
+	document.getElementById("calendrier").innerHTML = full;
+
+
 
 </script>
 </html>
