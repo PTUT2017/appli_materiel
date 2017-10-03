@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+</head>
+<body>
+	<div id="calendrier"></div>
+</body>
+<script type="text/javascript">
+
+	var date = new Date();
+	document.getElementById("calendrier").innerHTML = date;
+
+</script>
+</html>
