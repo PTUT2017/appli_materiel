@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendrier</title>
+	<style type="text/css">
+		#calendrier{
+			 border: 1px solid black;
+		}
+	</style>
+</head>
+
+
+
+<body id="page">
+
+
+
+<table id="calendrier">
+
+</table>
+
+<script type="text/javascript">
+
+// On initialise le Array et la date
+var tableau = new Array();
+var today = new Date();
+var donnee = "";
+
+// On va afficher les 100 prochains jours
+for(var i=1; i<=100; i++){
+	nextd = today.setDate(today.getDate()+1);
+	day = today.getDate()-1;
+	month = today.getMonth()+1;
+	year= today.getFullYear();
+	date = day+'/'+month+'/'+year+'<br/>';
+	var tab_jour=new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+	// Ici en fonction de la valeur rendu par getDay(de 0 à 6) on va récupérer le nom du jour  correspondant dans le tableau tab_jour
+	nomj=(tab_jour[today.getDay()]);
+
+
+
+	// Pour finir on affiche le tableau JS dans le html
+	var donnee = donnee+"<tr><td>"+date+"</td><td>"+nomj+"</td></tr>";
+	document.getElementById("calendrier").innerHTML = donnee;
+
+}
+
+</script>
+
+
+</body>
+</html>
