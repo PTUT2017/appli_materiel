@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendrier 1.7</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="stylemobile.css">
+    <link rel="stylesheet" type="text/css" href="stylePC.css" media="screen and (min-width: 800px)" >
+</head>
+<body onload="init()">
+
+<div id="container">
+    <div id="calendrier" class="displaywrap"></div>
+    <div id="moisText"></div>
+    <div class="displaywrap">
+        <input type="button" name="previousmonth" id="b_previousmonth" value="<=" onclick="previous()">
+        <div id="dateactuel"></div>
+        <input type="button" name="nextmonth" id="b_nextmonth" value="=>" onclick="next()" >
+    </div>
+</div>
+
+<script type="text/javascript">
+//On initialise les valeurs de base
+var today = new Date();
+//today.setDate(today.getDate()-today.getDate()+1);
+//today.setMonth(today.getMonth()-1);
+console.log(today);
+function init(){
+    var tab_jour=new Array("Lundi","Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche");
+    for($i=0;$i<7;$i++){
+        var e=document.createElement("div");
+        e.setAttribute('class','casej');
+        document.getElementById("calendrier").appendChild(e);
+        e.textContent = tab_jour[$i];
+    }
+    launch();
+}
+function launch(){
+    today.setDate(today.getDate()-today.getDate()+1);
+    //Ajout du nombre de case vide en fonction du jour (0-6) avec Dimanche = 0
+    var njour= today.getDay();
+    if(njour==0)
+    njour=7;
+    njour=njour-1;
+    for(var $i=0; $i<njour; $i++){
+                var e=document.createElement("div");
+                e.setAttribute('class','casei'); //Applique la classe casei qui a une opacité 0
+                document.getElementById("calendrier").appendChild(e);
+    }
+    //On sauvegarde le mois 
+    month= today.getMonth();
+    smonth = today.getMonth();
+    //Création des cases
+    for(var $i=0; month==smonth; $i++){
+            //Création de la div
+            var e=document.createElement("div");
+                e.setAttribute('class','case');
+                document.getElementById("calendrier").appendChild(e);
+            //On récupère les infos dans la date
+            day = today.getDate();
+            year= today.getFullYear();
+            //attribution contenu
+            e.textContent = day;
+            //incrémentation
+            today.setDate(today.getDate()+1);
+            //On récupère le mois
+            month = today.getMonth();
+    }
+    afficherMois();
+}
+function afficherMois() {
+    var tab_mois = new Array("None", "Janvier", "Février", "Mars","Avril","Mai","Juin","Juillet","Aout","Septembre", "Octobre", "Novembre","Décembre");
+    mmonth =  today.getMonth();
+    //Affichage du mois avec des valeurs de 0 à 11, avec Décembre = 0
+    if(mmonth==0)
+        mmonth=12;
+    for(var $i=mmonth; $i==mmonth; $i++){
+        
+        document.getElementById("moisText").innerHTML=tab_mois[$i];
+    }
+    //On affiche les mois et l'année dans la div prévu
+    var aff=mmonth+"/"+year
+    document.getElementById("dateactuel").innerHTML=aff;
+}
+function next(){
+    document.getElementById("calendrier").innerHTML = "";
+    init();
+}
+function previous(){
+    document.getElementById("calendrier").innerHTML = "";
+    today.setMonth(today.getMonth()-2);
+    init();
+}
+            
+</script>
+</body>
+</html>
