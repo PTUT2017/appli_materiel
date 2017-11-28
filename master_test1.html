@@ -25,29 +25,31 @@
 <div class="popup"><input type="button" name="fermer" value="fermer" id="fermer"> <div id="result"></div></div>
 <div class="popup-admin">
 
-            <legend><h1>Réservation :</h1></legend> 
-         </br>
-             <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
-         </br></br>
-             <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
-         </br></br>
-            <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
-         </br></br>
-            <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
-                                                            <option selected="selected" value="null">Groupe</option>
-                                                            <option value="P11">P11</option>
-                                                            <option value="P12">P12</option>
-                                                            <option value="P21">P21</option>
-                                                            <option value="P22">P22</option>
-                                                        </select>
-                                                        <select name="annee" id="annee">
-                                                            <option selected="selected" value="null">Année</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
+            <legend><h1>Réservation :</h1></legend>
+            <div id="form_etudiant"> 
+                 </br>
+                     <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
+                 </br></br>
+                     <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
+                 </br></br>
+                    <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
+                 </br></br>
+                    <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
+                                                                    <option selected="selected" value="null">Groupe</option>
+                                                                    <option value="P11">P11</option>
+                                                                    <option value="P12">P12</option>
+                                                                    <option value="P21">P21</option>
+                                                                    <option value="P22">P22</option>
+                                                                </select>
+                                                                <select name="annee" id="annee">
+                                                                    <option selected="selected" value="null">Année</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
 
-                                                        </select>
-                <input type="button" name="submit" id="submit" value="Valider étudiant">
-                <div id="res_add_etud"></div>
+                                                                </select>
+                        <input type="button" name="submit" id="submit" value="Valider étudiant">
+            </div>
+            <div id="res_add_etud"></div>
 
          </br></br>
              <b>Matériel: </b> 
@@ -221,18 +223,6 @@ $(document).ready(function(){
 
 
 
-        $.post(
-                'recup_matos.php',{
-
-                },
-                function(data,status)
-                {
-                    $("#affmateriel").html(data);
-                }
-
-            );
-
-
 
      });
 
@@ -255,6 +245,21 @@ $(document).ready(function(){
                 }
 
                 );
+
+    $("#form_etudiant").hide();
+
+    $.post(
+                'recup_matos.php',{
+
+                },
+                function(data,status)
+                {
+                    $("#affmateriel").html(data);
+                }
+
+            );
+
+
     });
 
 

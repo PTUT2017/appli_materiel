@@ -22,6 +22,7 @@ $reponseid=$id_connex->query($requete);
 		    while ($ligne = $reponseid-> fetch(PDO::FETCH_ASSOC)){
 		    	echo $ligne['id_etudiant']."</div>";
 		    }
+		    echo "<br>Veuillez sélectionner le matériel çi dessous";
 		
 	}
 else{
