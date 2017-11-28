@@ -6,17 +6,22 @@
     }
     .case{
         width: 100%;
-        height: 1%;
+        height: 45px;
+        padding: 20px;
         background-color: lightgreen;
         border: solid black 1px;
         padding: 0.5%;
+
+       
     }
     .casei{
-        width: 100%;
-        height: 1%;
+        width: 0;
+        height: 0;
         border: solid black 1px;
         opacity: 0;
-        padding: 0.5%;
+        padding: 5%;
+        position: absolute;
+
     }
 
 #container{
@@ -29,5 +34,28 @@
 
 .casej{
          
-        opacity: 0;
+        display: none;
     }
+
+.casenj{
+   /* background-color: yellow;*/
+    width: 2%;
+    
+}
+
+.casem{
+        /*background-color: green;*/
+        width: 7%;
+        /*height: 50%;*/
+       margin-left: 2%;
+       
+         
+
+
+
+       
+        
+        
+      
+}
+
