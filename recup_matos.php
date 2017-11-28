@@ -23,7 +23,7 @@ echo "<div id='video'><b>Vidéo</b>";
 
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['id_materiel']." ".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
 
             for($i = 1; $i<=$ligne['quantite_total']; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
@@ -41,7 +41,7 @@ $reponse=$id_connex->query($requete);
 echo "<div id='audio'><b>Audio</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['id_materiel']." ".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
 
             for($i = 1; $i<=$ligne['quantite_total']; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
@@ -56,7 +56,7 @@ $reponse=$id_connex->query($requete);
 echo "<div id='accesoire'><b>Accesoires</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['id_materiel']." ".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
         
         for($i = 1; $i<=$ligne['quantite_total']; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
@@ -71,7 +71,7 @@ $reponse=$id_connex->query($requete);
 echo "<div id='lumiere'><b>Lumière</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['id_materiel']." ".$ligne['designation']."<select id=".$ligne['id_materiel'].">
+	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel'].">
                         <option selected='selected' value='null'>Nombre</option>";
         for($i = 1; $i<=$ligne['quantite_total']; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
