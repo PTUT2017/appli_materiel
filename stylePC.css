@@ -1,11 +1,17 @@
+ body{
+    max-height: 100%;
+ }
+
+
  .displaywrap{
         display: flex;
         flex-wrap: wrap;
         margin: auto;
+        
     }
     .case{
         width: 13%;
-        height: 9%;
+        
         background-color: lightblue;
         border: solid black 1px;
         padding: 0.5%;
@@ -14,7 +20,7 @@
     
     .casei{
         width: 13%;
-        height: 9%;
+        
         border: solid black 1px;
         opacity: 0;
         padding: 0.5%;
@@ -23,11 +29,53 @@
 
     .casej{
         width: 13%;
-        height: 9%;
+        z-index: 1;
         background-color: lightblue;
         border: solid black 1px;
         padding: 0.5%;
         opacity: 1;
+        display: block;
 
 
     }
+    .popup{
+        background-color: lightblue;
+        border: solid black 5px;
+        width: 600px;      
+        height: 400px;
+        margin-top: -150px;
+        margin-left: 200px; 
+        opacity: 0;
+        position: relative;
+    }
+        .popup-admin{
+        background-color: lightblue;
+        border: solid black 5px;
+        width: 700px;      
+        height: 400px;
+        margin-top: -150px;
+        margin-left: 200px; 
+        opacity: 0;
+        position: relative;
+    }
+
+    .casem{
+        
+       display: none;
+      
+    }
+
+    #choix{
+    border: solid 1px black; 
+    border-radius: 2px;
+    display: wrap;
+
+    }
+    .displaywrap{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        
+    }
+
+    
