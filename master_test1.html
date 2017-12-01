@@ -3,77 +3,81 @@
 <head>
     <title>Calendrier 1.7</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="stylemobile.css">
-    <link rel="stylesheet" type="text/css" href="stylePC.css" media="screen and (min-width: 800px)" >
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="stylemobile.css" media="screen and (max-width: 900px)">
+    <link rel="stylesheet" type="text/css" href="stylePC.css" media="screen and (min-width: 901px)" >
 </head>
 <body onload="init()">
 
 
-
+<div id="dark"></div> <!-- assombrir lors de l'ouverture popup et popup-admin -->
 <div id="container">
-    <div id="moisText"></div>
-    <div class="displaywrap">
-        <input type="button" name="previousmonth" id="b_previousmonth" value="<=" onclick="previous()">
-        <div id="dateactuel"></div>
-        <input type="button" name="nextmonth" id="b_nextmonth" value="=>" onclick="next()" >
-        <input type="button" name="resetmonth" id="resetmonth" value="reset" onclick="reset()" >
+    
+    <div id="header">
+        <h1><div id="moisText"></div></h1>
+        <div class="displaywrap">
+            <input type="button" name="previousmonth" id="b_previousmonth" value="<=" onclick="previous()">
+            <b><div id="dateactuel"></div></b>
+            <input type="button" name="nextmonth" id="b_nextmonth" value="=>" onclick="next()" >
+            <input type="button" name="resetmonth" id="resetmonth" value="reset" onclick="reset()" >
+        </div>
     </div>
     <div id="calendrier" class="displaywrap"></div>
-   
 </div>
+
 <input type="button" name="Administration" id="admin" value="Administration">
 <div class="popup"><input type="button" name="fermer" value="fermer" id="fermer"> <div id="result"></div></div>
 <div class="popup-admin">
 
-            <legend><h1>Réservation :</h1></legend>
-            <div id="form_etudiant"> 
-                 </br>
-                     <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
-                 </br></br>
-                     <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
-                 </br></br>
-                    <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
-                 </br></br>
-                    <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
-                                                                    <option selected="selected" value="null">Groupe</option>
-                                                                    <option value="P11">P11</option>
-                                                                    <option value="P12">P12</option>
-                                                                    <option value="P21">P21</option>
-                                                                    <option value="P22">P22</option>
-                                                                </select>
-                                                                <select name="annee" id="annee">
-                                                                    <option selected="selected" value="null">Année</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-
-                                                                </select>
-                        <input type="button" name="submit" id="submit" value="Valider étudiant">
-            </div>
-            <div id="res_add_etud"></div>
-
-         </br></br>
-             <b>Matériel: </b> 
-         </br></br>
-         
-         <div class="displaywrap" id="affmateriel">
-            
-         </div>
-
-
-        <h1>Ajout matériel base de donnée</h1>
-
-        <label for="add_designation"><b>Désignation: </b></label> <input type="text" name="add_designation" id="add_designation" value="">
-        <label for="add_categorie"><b>Catégorie: </b></label> <select name="add_categorie" id="add_categorie">
-                                                            <option value="video">Vidéo</option>
-                                                            <option value="audio">Audio</option>
-                                                            <option value="accesoire">Accesoires</option>
-                                                            <option value="lumiere">Lumières</option>
+    <legend><h1>Réservation :</h1></legend>
+    <div id="form_etudiant"> 
+        </br>
+             <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
+        </br></br>
+             <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
+        </br></br>
+            <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
+        </br></br>
+            <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
+                                                            <option selected="selected" value="null">Groupe</option>
+                                                            <option value="P11">P11</option>
+                                                            <option value="P12">P12</option>
+                                                            <option value="P21">P21</option>
+                                                            <option value="P22">P22</option>
                                                         </select>
+                                                        <select name="annee" id="annee">
+                                                            <option selected="selected" value="null">Année</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
 
-        <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel">
+                                                        </select>
+        <input type="button" name="submit" id="submit" value="Valider étudiant">
+    </div>
+    <div id="res_add_etud"></div>
+
+     </br></br>
+         <b>Matériel: </b> 
+     </br></br>
+     
+     <div class="displaywrap" id="affmateriel">
+        
+     </div>
 
 
-        <input type="button" name="fermer" value="fermer" id="fermer">
+    <h1>Ajout matériel base de donnée</h1>
+
+    <label for="add_designation"><b>Désignation: </b></label> <input type="text" name="add_designation" id="add_designation" value="">
+    <label for="add_categorie"><b>Catégorie: </b></label> <select name="add_categorie" id="add_categorie">
+                                                        <option value="video">Vidéo</option>
+                                                        <option value="audio">Audio</option>
+                                                        <option value="accesoire">Accesoires</option>
+                                                        <option value="lumiere">Lumières</option>
+                                                    </select>
+
+    <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel">
+
+
+    <input type="button" name="fermer" value="fermer" id="fermer">
 
 </div>
 
@@ -184,81 +188,78 @@ function reset(){
 </script>
 
 <script src="jquery.js"></script>
-<script src="animation_style.js" type="text/javascript"></script>
+<script src="animation_style.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+    //Affichage du popup
     $(document).on("click",".case", function(){
-        
         console.log("ok");
-         $.post(
+        $.post(
             'calendrier.php',
             {
-                 day: $(this).text(),
-                 month: mmonth,
-                 year: year,
-             },
-           function(data, status)
-          {
-            console.log(data);
-             $("#result").html(data);
-        }
-        );  
+                day: $(this).text(),
+                month: mmonth,
+                year: year,
+            },
+            function(data, status)
+            {
+                console.log(data);
+                $("#result").html(data);
+            }
+        );
 
-
-            $(".popup").css({'opacity':'100',"z-index":"1"});
-            $(".popup-admin").css({'opacity':'0',"z-index":"0"});
-            $(".case").css({"z-index":"0"});
+        $(".popup").css({'opacity':'100',"z-index":"3"});
+        $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+        $("#dark").css({'opacity':'0.5',"z-index":"2"});
     });
 
-     $(document).on("click","#fermer",function(){
-            $(".popup").css({'opacity':'0',"z-index":"0"});
-            $(".popup-admin").css({'opacity':'0',"z-index":"0"});
-            $(".case").css({"z-index":"1"});
+    //Fermer
+    $(document).on("click","#fermer", function(){
 
-      });
-     $(document).on("click","#admin",function(){
+        $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+        $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+        $("#dark").css({'opacity':'0',"z-index":"-3"}); // retour position initial
+    });
 
-        $(".popup-admin").css({'opacity':'100',"z-index":"1"});
-            $(".popup").css({'opacity':'0',"z-index":"0"});
-            $(".case").css({"z-index":"1"});
-
-
-
-
-     });
+    //Ouverture du popup admin
+    $(document).on("click","#admin", function(){
+        $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+        $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+        $("#dark").css({'opacity':'0.5',"z-index":"2"});
+    });
 
 
 
 
     $(document).on("click","#submit", function(){
 
-    $.post(
-                'ajout_etudiant.php',{
-                    nom: $("#nom").val(),
-                    prenom: $("#prenom").val(),
-                    groupe: $("#groupe").val(),
-                    annee: $("#annee").val(),
+        $.post(
+            'ajout_etudiant.php',{
+                nom: $("#nom").val(),
+                prenom: $("#prenom").val(),
+                groupe: $("#groupe").val(),
+                annee: $("#annee").val(),
 
-                },
-                function(data,status)
-                {
-                    $("#res_add_etud").html(data);
-                }
+            },
+            function(data,status)
+            {
+                $("#res_add_etud").html(data);
+            }
 
-                );
+        );
 
     $("#form_etudiant").hide();
 
-    $.post(
-                'recup_matos.php',{
+        $.post(
+            'recup_matos.php',{
 
-                },
-                function(data,status)
-                {
-                    $("#affmateriel").html(data);
-                }
+            },
+            function(data,status)
+            {
+                $("#affmateriel").html(data);
+            }
 
-            );
+        );
 
 
     });
@@ -268,23 +269,22 @@ $(document).ready(function(){
 
 
      $(document).on("change","#affmateriel select", function(){
+        $.post(
+        'ajout_materiel.php',{
+            quantite_reserver: $(this).val(),
+            id_materiel: $(this).attr("id"),
+            id_etudiant: $("#idaff").text(),
+            nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+            date_debut: $("#date_debut").val(),
+            date_retour: $("#date_retour").val(),
 
-                $.post(
-                'ajout_materiel.php',{
-                    quantite_reserver: $(this).val(),
-                    id_materiel: $(this).attr("id"),
-                    id_etudiant: $("#idaff").text(),
-                    nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
-                    date_debut: $("#date_debut").val(),
-                    date_retour: $("#date_retour").val(),
+        },
+        function(data,status)
+        {
+            $("#popup-admin-result").html(data);
+        }
 
-                },
-                function(data,status)
-                {
-                    $("#popup-admin-result").html(data);
-                }
-
-                );
+        );
     });
 
     $(document).on("click","#add_mat",function(){
