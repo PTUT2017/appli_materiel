@@ -38,11 +38,12 @@
 
 /*CALENDRIER*/
 #calendrier{
-    line-height: 64px; /*ligne espacé*/
+
 }
 .case{
-    width: 13%;
     /*z-index: 0;*/
+    width: 13%;
+    height: 50px;
     background-color: lightblue;
     border: solid black 1px;
     padding: 0.5%;
@@ -51,12 +52,14 @@
 
 .casei{ /*case invisible*/
     width: 13%;
+    height: 50px;
     border: solid black 1px;
     opacity: 0;
     padding: 0.5%;
 }
 
-.casej{
+.casej{ /*jour de la semaine */
+    text-align: center;
     width: 13%;
     z-index: 1; /*couche initial*/
     background-color: lightblue;
