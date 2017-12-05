@@ -79,6 +79,8 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
             echo "</select>";
 }
 
+echo "<input type='submit' id'testres'/>";
+
 echo "</div>";
 
 $reponse->closeCursor();
