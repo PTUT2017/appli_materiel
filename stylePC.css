@@ -29,7 +29,7 @@
 }
 
 
-/*Date + Bouton*/
+/*HEAD   (Date + Bouton)*/
 #header{
     color: #00aeb7;
     text-align: center;
@@ -39,27 +39,58 @@
     margin:auto;
     display: inline-block;
 }
-#b_previousmonth{
+.csslr{ /* les 2 boutons*/
     color: #00aeb7;
     background-color: white;
     border-radius: 20px;
     border: 2px solid #00aeb7;
-    width: 50px;
-    height: 20px;
+    width: 85px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0px 4px;
 }
-#b_nextmonth{
-    color: #00aeb7;
-    background-color: white;
-    border-radius: 20px;
-    border: 2px solid #00aeb7;
-    width: 50px;
-    height: 20px;
+.csslr:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
 }
-#resetmonth{
+.csslr:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
 
 }
+.stylebt{
+    font-family: Verdana;
+    color: #00aeb7;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00aeb7;
+    padding : 5px;
+    box-shadow: 0px 4px;
+    font-weight: bold;
+
+}
+.stylebt:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
+}
+.stylebt:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
+}
+
+
 
 /*CALENDRIER*/
+@keyframes scan{
+    0%{
+        background: #00aeb7;
+
+    }
+    50%{
+        background-color:#52d9e0;
+    }
+}
 #calendrier{
     margin-top: 20px;
 }
@@ -74,7 +105,8 @@
     opacity: 0.8;
 }
 .case:hover{
-    background-color:#52d9e0;;
+    
+    animation: scan 0.8s infinite;
 }
 
 .casei{ /*case invisible*/
@@ -87,7 +119,7 @@
 
 .casej{ /*jour de la semaine */
     color: white;
-    font-weight: 20px;
+    font-weight: bold;
     text-align: center;
     width: 13%;
     z-index: 1; /*couche initial*/
@@ -99,13 +131,15 @@
 
 
 }
+
+
+/*POPUP*/
 .popup{
     z-index: -1; /*couche initial*/
     position: absolute;
     background-color: lightblue;
     border: solid black 5px;
-    width: 600px;      
-    height: 400px;
+    padding: 30px;
     margin-top: -500px;
     margin-left: 200px;
     opacity: 0;
@@ -116,8 +150,7 @@
     position: fixed;
     background-color: lightblue;
     border: solid black 5px;
-    width: 700px;      
-    height: 100%;
+    padding: 30px;
     margin-top: -500px;
     margin-left: 200px; 
     opacity: 0;

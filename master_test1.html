@@ -17,17 +17,17 @@
         <h1><div id="moisText"></div></h1>
         <div id="sshead" class="displaywrap">
             <b><div id="dateactuel"></div></b></br>
-            <input type="button" name="previousmonth" id="b_previousmonth" value="<=" onclick="previous()">
-            <input type="button" name="resetmonth" id="resetmonth" value="reset" onclick="reset()" >
-            <input type="button" name="nextmonth" id="b_nextmonth" value="=>" onclick="next()" >
+            <input type="button" name="previousmonth" id="b_previousmonth" class="csslr" value="<" onclick="previous()">
+            <input type="button" name="resetmonth" id="resetmonth" value="Reset" class="stylebt" onclick="reset()" >
+            <input type="button" name="nextmonth" id="b_nextmonth" class="csslr" value=">" onclick="next()" >
             
         </div>
     </div>
     <div id="calendrier" class="displaywrap"></div>
 </div>
 
-<input type="button" name="Administration" id="admin" value="Administration">
-<div class="popup"><input type="button" name="fermer" value="fermer" id="fermer"> <div id="result"></div></div>
+<input type="button" name="Administration" id="admin" value="Administration" class="stylebt">
+<div class="popup"><input type="button" name="fermer" value="fermer" id="fermer" class="stylebt"> <div id="result"></div></div>
 <div class="popup-admin">
 
     <legend><h1>Réservation :</h1></legend>
@@ -52,7 +52,7 @@
                                                             <option value="2">2</option>
 
                                                         </select>
-        <input type="button" name="submit" id="submit" value="Valider étudiant">
+        <input type="button" name="submit" id="submit" value="Valider étudiant" class="stylebt">
     </div>
     <div id="res_add_etud"></div>
 
@@ -75,10 +75,10 @@
                                                         <option value="lumiere">Lumières</option>
                                                     </select>
 
-    <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel">
+    <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
 
 
-    <input type="button" name="fermer" value="fermer" id="fermer">
+    <input type="button" name="fermer" value="fermer" id="fermer" class="stylebt">
 
 </div>
 
