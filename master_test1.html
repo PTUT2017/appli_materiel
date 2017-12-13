@@ -265,26 +265,33 @@ $(document).ready(function(){
 
 
 
+    $(document).on("click","#submitmatos", function(){
 
-     $(document).on("change","#affmateriel select", function(){
 
-                $.post(
-                'ajout_materiel.php',{
-                    quantite_reserver: $(this).val(),
-                    id_materiel: $(this).attr("id"),
-                    id_etudiant: $("#idaff").text(),
-                    nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
-                    date_debut: $("#date_debut").val(),
-                    date_retour: $("#date_retour").val(),
+                    
+                    $("#affmateriel>div>select").each(function(){
+                        if($(this).val()!='null'){
 
-                },
-                function(data,status)
-                {
-                    $("#popup-admin-result").html(data);
-                }
+                                $.post(
+                                    'ajout_materiel.php',{
+                                        quantite_reserver: $(this).val(),
+                                        id_materiel: $(this).attr("id"),
+                                        id_etudiant: $("#idaff").text(),
+                                        nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+                                        date_debut: $("#date_debut").val(),
+                                        date_retour: $("#date_retour").val(),
 
-                );
-    });
+                                    },
+                                    function(data,status)
+                                    {
+                                        $("#affmateriel").html(data);
+                                    }
+                                );
+                        }
+                    });
+        });
+
+
 
     $(document).on("click","#add_mat",function(){
             $.post(

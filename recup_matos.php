@@ -80,6 +80,7 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 }
 
 echo "</div>";
+echo "<input type='button' id='submitmatos' value='Valider matériel'>";
 
 $reponse->closeCursor();
 $id_connex=null;
