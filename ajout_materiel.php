@@ -37,5 +37,6 @@ else{
 
     echo "La réservation a échoué";
 }
+
 $id_connex=null;
 ?>
