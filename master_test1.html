@@ -241,8 +241,6 @@ $(document).ready(function(){
 
     $(document).on("click","#submit", function(){
 
-    var date_debut = $("#date_debut").val();
-    var date_retour = $("#date_retour").val();
     $.post(
                 'ajout_etudiant.php',{
                     nom: $("#nom").val(),
@@ -286,12 +284,11 @@ $(document).ready(function(){
                         quantite_reserver: $(this).val(),
                         id_materiel: $(this).attr("id"),
                         id_etudiant: $("#idaff").text(),
-                        nb_mat: $("#affmateriel select[value='1'][value='2'][value='3'][value='4'][value='5'][value='6']  option:selected").val(),
-                        date_debut: date_debut,
-                        date_retour: date_retour,
+                        nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+                        date_debut: $("#date_debut").val(),
+                        date_retour: $("#date_retour").val(),
 
-                    },
-
+                },
                 function(data,status)
                 {
                     $("#popup-admin-result").html(data);
