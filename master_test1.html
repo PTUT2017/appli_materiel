@@ -26,28 +26,18 @@
 <div class="popup"><input type="button" name="fermer" value="fermer" id="fermer"> <div id="result"></div></div>
 <div class="popup-admin">
 
-            <legend><h1>Réservation :</h1></legend>
+            <legend><h1>Réservation </h1></legend>
             <div id="form_etudiant"> 
                  </br>
                      <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
                  </br></br>
                      <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
                  </br></br>
-                    <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
-                 </br></br>
-                    <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
-                                                                    <option selected="selected" value="null">Groupe</option>
-                                                                    <option value="P11">P11</option>
-                                                                    <option value="P12">P12</option>
-                                                                    <option value="P21">P21</option>
-                                                                    <option value="P22">P22</option>
-                                                                </select>
-                                                                <select name="annee" id="annee">
-                                                                    <option selected="selected" value="null">Année</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-
-                                                                </select>
+                     <label for="groupe"><b>Groupe: </b></label>
+                     		<input type="radio" name="1A" value="1A" checked="checked">1A
+                     		<input type="radio" name="2A" value="2A">2A
+                     		<input type="radio" name="LP" value="LP">LP
+                  </br></br>                                     
                         <input type="button" name="submit" id="submit" value="Valider étudiant">
             </div>
             <div id="res_add_etud"></div>
@@ -190,6 +180,22 @@ function reset(){
 <script src="jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+
+
+	$(document).on("click",':radio', function(){
+
+		$(this).siblings().prop("checked","");
+
+
+
+	});
+
+
+
+
+
+
     $(document).on("click",".case", function(){
         
         console.log("ok");
