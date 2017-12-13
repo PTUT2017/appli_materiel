@@ -18,7 +18,7 @@
         <div id="sshead" class="displaywrap">
             <b><div id="dateactuel"></div></b></br>
             <input type="button" name="previousmonth" id="b_previousmonth" class="csslr" value="<" onclick="previous()">
-            <input type="button" name="resetmonth" id="resetmonth" value="Reset" class="stylebt" onclick="reset()" >
+            <input type="button" name="resetmonth" id="resetmonth" value="Aujourd'hui" class="stylebt" onclick="reset()" >
             <input type="button" name="nextmonth" id="b_nextmonth" class="csslr" value=">" onclick="next()" >
             
         </div>
@@ -27,19 +27,22 @@
 </div>
 
 <input type="button" name="Administration" id="admin" value="Administration" class="stylebt">
-<div class="popup"><input type="button" name="fermer" value="fermer" id="fermer" class="stylebt"> <div id="result"></div></div>
+<div class="popup">
+    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
+    <div id="result"></div>
+</div>
 <div class="popup-admin">
-
-    <legend><h1>Réservation :</h1></legend>
+    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt">
+    <legend><h1>Réservation</h1></legend>
     <div id="form_etudiant"> 
         </br>
-             <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
+             <label for="date_debut"><b>Date de réservation </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
         </br></br>
-             <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
+             <label for="nom"><b>Nom </b></label> <input type="text" name="nom" id="nom" value="">
         </br></br>
-            <label for="prenom"><b>Prénom: </b></label> <input type="text" name="prenom" id="prenom" value="">
+            <label for="prenom"><b>Prénom </b></label> <input type="text" name="prenom" id="prenom" value="">
         </br></br>
-            <label for="groupe"><b>Groupe: </b></label> <select name="groupe" id="groupe">
+            <label for="groupe"><b>Groupe </b></label> <select name="groupe" id="groupe">
                                                             <option selected="selected" value="null">Groupe</option>
                                                             <option value="P11">P11</option>
                                                             <option value="P12">P12</option>
@@ -57,7 +60,7 @@
     <div id="res_add_etud"></div>
 
      </br></br>
-         <b>Matériel: </b> 
+         <b>Matériel </b> 
      </br></br>
      
      <div class="displaywrap" id="affmateriel">
@@ -67,8 +70,8 @@
 
     <h1>Ajout matériel base de donnée</h1>
 
-    <label for="add_designation"><b>Désignation: </b></label> <input type="text" name="add_designation" id="add_designation" value="">
-    <label for="add_categorie"><b>Catégorie: </b></label> <select name="add_categorie" id="add_categorie">
+    <label for="add_designation"><b>Désignation </b></label> <input type="text" name="add_designation" id="add_designation" value="">
+    <label for="add_categorie"><b>Catégorie </b></label> <select name="add_categorie" id="add_categorie">
                                                         <option value="video">Vidéo</option>
                                                         <option value="audio">Audio</option>
                                                         <option value="accesoire">Accesoires</option>
@@ -78,7 +81,7 @@
     <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
 
 
-    <input type="button" name="fermer" value="fermer" id="fermer" class="stylebt">
+    
 
 </div>
 

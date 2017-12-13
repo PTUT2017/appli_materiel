@@ -1,5 +1,5 @@
  body{
-   
+    background-color: #F0F0F0;
     font-family: Verdana;
  }
 
@@ -79,6 +79,9 @@
   box-shadow: 0px 0px;
 }
 
+#fermer{
+    float: right;
+}
 
 
 /*CALENDRIER*/
@@ -137,7 +140,7 @@
 .popup{
     z-index: -1; /*couche initial*/
     position: absolute;
-    background-color: lightblue;
+    background-color: #87d2d6;
     border: solid black 5px;
     padding: 30px;
     margin-top: -500px;
@@ -148,13 +151,25 @@
 .popup-admin{
     z-index: -2; /*couche initial*/
     position: fixed;
-    background-color: lightblue;
+    background-color: #87d2d6;
     border: solid black 5px;
     padding: 30px;
     margin-top: -500px;
     margin-left: 200px; 
     opacity: 0;
     
+}
+#video{
+    padding: 10px 20px;
+}
+#audio{
+    padding: 10px 20px;
+}
+#accesoire{
+    padding: 10px 20px;
+}
+#lumiere{
+    padding: 10px 20px;
 }
 
 .casem{
