@@ -3,7 +3,10 @@
     font-family: Verdana;
  }
 
-
+h1{
+    background-color: #393939;
+    color: white;
+}
 .displaywrap{ /*paramètre*/
     display: flex;
     flex-wrap: wrap;
@@ -140,8 +143,8 @@
 .popup{
     z-index: -1; /*couche initial*/
     position: absolute;
-    background-color: #87d2d6;
-    border: solid black 5px;
+    background-color: #F0F0F0;
+    border: solid #393939 5px;
     padding: 30px;
     margin-top: -500px;
     margin-left: 200px;
@@ -150,9 +153,9 @@
 }
 .popup-admin{
     z-index: -2; /*couche initial*/
-    position: fixed;
-    background-color: #87d2d6;
-    border: solid black 5px;
+    position: absolute;
+    background-color: #F0F0F0;
+    border: solid #393939 5px;
     padding: 30px;
     margin-top: -500px;
     margin-left: 200px; 
@@ -160,16 +163,16 @@
     
 }
 #video{
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 #audio{
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 #accesoire{
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 #lumiere{
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
 
 .casem{
