@@ -1,7 +1,6 @@
 <?php
-echo $_POST["day"]." / ";
-echo $_POST["month"]." / ";
-echo $_POST["year"]." ";
+$caseclick = $_POST["day"]."-".$_POST["month"]."-".$_POST["year"];
+echo $caseclick."<br>";
 
 try
 {
@@ -11,6 +10,27 @@ catch (PDOException $e)
 {
     die('Erreur : ' . $e->getMessage());
 }
+
+$requete="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver FROM reserver";
+$reponse=$id_connex->query($requete);
+		while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
+					$datetimedebut = new DateTime($ligne['date_debut']);
+					$datetimeretour = new DateTime($ligne['date_retour']);
+					$datetimecase = new DateTime($caseclick);
+
+					$intervalreserv = $datetimedebut->diff($datetimeretour);
+					echo $intervalreserv->format('%R%a days');
+
+					$intervalcase_debut = $datetimedebut->diff($datetimecase);
+					echo $intervalcase_debut->format('%R%a days');
+
+					$intervalcase_retour = $datetimecase->diff($datetimeretour);
+					echo $intervalcase_retour->format('%R%a days')."<br>";
+
+		}
+
+
+
 
 
 echo "<div class='displaywrap'>";

@@ -61,6 +61,7 @@
                                                             <option value="accesoire">Accesoires</option>
                                                             <option value="lumiere">Lumières</option>
                                                         </select>
+        <label for="add_quantite"><b>Quantité: </b></label> <input type="text" name="add_quantite" id="add_quantite" value="">
 
         <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel">
 
@@ -201,8 +202,9 @@ $(document).ready(function(){
         console.log("ok");
          $.post(
             'calendrier.php',
-            {
-                 day: $(this).text(),
+            {       
+                // On sélectionne le premier car sinon on affiche aussi le nom du jour rpésent pour la version mobile
+                 day: $(this).children("div:first").text(),
                  month: mmonth,
                  year: year,
              },
@@ -305,6 +307,7 @@ $(document).ready(function(){
                 'add_mat.php',{
                     designation: $("#add_designation").val(),
                     categorie: $("#add_categorie").val(),
+                    quantite_total: $("#add_quantite").val(),
                     
                 },
                 function(data,status)
