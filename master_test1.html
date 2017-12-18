@@ -67,7 +67,7 @@
                                                         <option value="accesoire">Accesoires</option>
                                                         <option value="lumiere">Lumières</option>
                                                     </select>
-
+    <label for="quantite_total"><b>Quantite total </b></label> <input type="text" name="quantite_total" id="quantite_total" value="">
     <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
 
     <input type="button" name="Réservations" id="res" value="Réservations" class="stylebt">
@@ -231,9 +231,7 @@ $(document).ready(function(){
         $.post(
             'ajout_etudiant.php',{
                 nom: $("#nom").val(),
-                prenom: $("#prenom").val(),
                 groupe: $("#groupe").val(),
-                annee: $("#annee").val(),
 
             },
             function(data,status)
@@ -292,6 +290,7 @@ $(document).ready(function(){
     $(document).on("click","#add_mat",function(){
             $.post(
                 'add_mat.php',{
+                    quantite_total: $("#quantite_total").val(),
                     designation: $("#add_designation").val(),
                     categorie: $("#add_categorie").val(),
                     

@@ -9,7 +9,7 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
-$requete="INSERT INTO materiel (designation, categorie) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."')";
+$requete="INSERT INTO materiel (designation, categorie, quantite_total, quantite_restante) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST["quantite_total"]."', '".$_POST["quantite_total"]."')";
 $reponse=$id_connex->exec($requete);
 
 if($reponse!=""){
