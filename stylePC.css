@@ -1,33 +1,190 @@
- .displaywrap{
-        display: flex;
-        flex-wrap: wrap;
-        margin: auto;
-    }
-    .case{
-        width: 13%;
-        height: 9%;
-        background-color: lightblue;
-        border: solid black 1px;
-        padding: 0.5%;
-    }
+ body{
+    background-color: #F0F0F0;
+    font-family: Verdana;
+ }
 
+h1{
+    background-color: #393939;
+    color: white;
+}
+.displaywrap{ /*paramètre*/
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
     
-    .casei{
-        width: 13%;
-        height: 9%;
-        border: solid black 1px;
-        opacity: 0;
-        padding: 0.5%;
+}
+
+#dark{
+    margin: -50px 0px 0px -8px;
+    position: absolute;
+    z-index: -3; /*couche initial*/
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+   
+
+#container{
+    min-width: 700px;
+    margin: 50px 100px;
+}
+
+
+/*HEAD   (Date + Bouton)*/
+#header{
+    color: #00aeb7;
+    text-align: center;
+   
+}
+#sshead{
+    margin:auto;
+    display: inline-block;
+}
+.csslr{ /* les 2 boutons*/
+    color: #00aeb7;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00aeb7;
+    width: 85px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0px 4px;
+}
+.csslr:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
+}
+.csslr:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
+
+}
+.stylebt{
+    font-family: Verdana;
+    color: #00aeb7;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00aeb7;
+    padding : 5px;
+    box-shadow: 0px 4px;
+    font-weight: bold;
+
+}
+.stylebt:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
+}
+.stylebt:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
+}
+
+#fermer{
+    float: right;
+}
+
+
+/*CALENDRIER*/
+@keyframes scan{
+    0%{
+        background: #00aeb7;
+
     }
-
-
-    .casej{
-        width: 13%;
-        height: 9%;
-        background-color: lightblue;
-        border: solid black 1px;
-        padding: 0.5%;
-        opacity: 1;
-
-
+    50%{
+        background-color:#52d9e0;
     }
+}
+#calendrier{
+    margin-top: 20px;
+}
+.case{
+    /*z-index: 0;*/
+    width: 13%;
+    height: 50px;
+    background-color: #00aeb7;
+    border: solid black 1px;
+    padding: 0.5%;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.case:hover{
+    
+    animation: scan 0.8s infinite;
+}
+
+.casei{ /*case invisible*/
+    width: 13%;
+    height: 50px;
+    border: solid black 1px;
+    background-color: white;
+    padding: 0.5%;
+}
+
+.casej{ /*jour de la semaine */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 13%;
+    z-index: 1; /*couche initial*/
+    background-color: #393939;
+    border: solid black 1px;
+    padding: 0.5%;
+    opacity: 1;
+    display: block;
+
+
+}
+
+
+/*POPUP*/
+.popup{
+    z-index: -1; /*couche initial*/
+    position: absolute;
+    background-color: #F0F0F0;
+    border: solid #393939 5px;
+    padding: 30px;
+    margin-top: -500px;
+    margin-left: 200px;
+    opacity: 0;
+    
+}
+.popup-admin{
+    z-index: -2; /*couche initial*/
+    position: absolute;
+    background-color: #F0F0F0;
+    border: solid #393939 5px;
+    padding: 30px;
+    margin-top: -500px;
+    margin-left: 200px; 
+    opacity: 0;
+    
+}
+#video{
+    padding: 20px 20px;
+}
+#audio{
+    padding: 20px 20px;
+}
+#accesoire{
+    padding: 20px 20px;
+}
+#lumiere{
+    padding: 20px 20px;
+}
+
+.casem{
+    
+   display: none;
+  
+}
+
+#choix{
+    border: solid 1px black; 
+    border-radius: 2px;
+    display: wrap;
+
+}
+

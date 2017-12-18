@@ -1,33 +1,91 @@
-.displaywrap{
-        display: flex;
-        flex-wrap: wrap;
-        
+body{
+    margin: 0px;
+    font-family: Verdana;
+}
 
-    }
-    .case{
-        width: 100%;
-        height: 1%;
-        background-color: lightgreen;
-        border: solid black 1px;
-        padding: 0.5%;
-    }
-    .casei{
-        width: 100%;
-        height: 1%;
-        border: solid black 1px;
-        opacity: 0;
-        padding: 0.5%;
-    }
+.displaywrap{ /*paramètre*/
+    display: flex;
+    flex-wrap: wrap;
+}
 
-#container{
-        max-width: auto;
-        margin-left: 50px;
-        margin-right: 50px;
+/*Date + Bouton*/
+#header{
+    position: fixed;
+    z-index: 2;
+    text-align: center;
+    background-color: yellow;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    margin-left: 50%;
+
+}
+
+#moisText{
+
+}
+#dateactuel{
+
+}
+#b_previousmonth{
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00d5e0;
+    width: 50px;
+    height: 20px;
+}
+#b_nextmonth{
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00d5e0;
+    width: 50px;
+    height: 20px;
+}
+#resetmonth{
+
+}
+
+/*CALENDRIER*/
+#calendrier{
+    position: absolute;
+    margin: 120px 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+
+}
+
+.case{
+    width: 100%;
+    height: 45px;
+    padding: 20px;
+    background-color: #00aeb7;
+    border: solid black 1px;
+    padding: 0.5%;
+
+   
+}
+.casei{
+    width: 0;
+    height: 0;
+    border: solid black 1px;
+    opacity: 0;
+    padding: 5%;
+    position: absolute;
+
+}
+
+.casej{    
+    display: none;
+}
+.casenj{
+   /* background-color: yellow;*/
+    width: 2%;
+    
+}
+.casem{
+    /*background-color: green;*/
+    width: 7%;
+    /*height: 50%;*/
+   margin-left: 2%;
+
 }
 
 
 
-.casej{
-         
-        opacity: 0;
-    }

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendrier</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="stylemobile.css" media="screen and (max-width: 800px)">
+    <link rel="stylesheet" type="text/css" href="stylePC.css" media="screen and (min-width: 801px)" >
+</head>
+<body onload="init()">
+
+
+<div id="dark"></div> <!-- assombrir lors de l'ouverture popup et popup-admin -->
+<div id="container">
+    
+    <div id="header">
+        <h1><div id="moisText"></div></h1>
+        <div id="sshead" class="displaywrap">
+            <b><div id="dateactuel"></div></b></br>
+            <input type="button" name="previousmonth" id="b_previousmonth" class="csslr" value="<" onclick="previous()">
+            <input type="button" name="resetmonth" id="resetmonth" value="Aujourd'hui" class="stylebt" onclick="reset()" >
+            <input type="button" name="nextmonth" id="b_nextmonth" class="csslr" value=">" onclick="next()" >
+            
+        </div>
+    </div>
+    <div id="calendrier" class="displaywrap"></div>
+</div>
+
+<input type="button" name="Administration" id="admin" value="Administration" class="stylebt">
+<div class="popup">
+    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
+    <div id="result"></div>
+</div>
+<div class="popup-admin">
+    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt">
+    <legend><h1>Réservation</h1></legend>
+    <div id="form_etudiant"> 
+        </br>
+                     <label for="date_debut"><b>Date de réservation: </b></label> <input type="date" name="date_debut" id="date_debut" value=""> au <input type="date" name="date_retour" id="date_retour" value="">
+                 </br></br>
+                     <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
+                 </br></br>
+                     <label for="groupe"><b>Groupe: </b></label>
+                            <input type="radio" id="groupe" name="groupe" value="1A" checked="checked">1A
+                            <input type="radio" id="groupe" name="groupe" value="2A">2A
+                            <input type="radio" id="groupe" name="groupe" value="LP">LP
+                  </br></br>
+        <input type="button" name="submit" id="submit" value="Valider étudiant" class="stylebt">
+    </div>
+    <div id="res_add_etud"></div>
+    <div id="mat_res"></div>
+     </br></br>
+         <b>Matériel </b> 
+     </br></br>
+     
+     <div class="displaywrap" id="affmateriel">
+        
+     </div>
+
+
+    <h1>Ajout matériel base de donnée</h1>
+
+    <label for="add_designation"><b>Désignation </b></label> <input type="text" name="add_designation" id="add_designation" value="">
+    <label for="add_categorie"><b>Catégorie </b></label> <select name="add_categorie" id="add_categorie">
+                                                        <option value="video">Vidéo</option>
+                                                        <option value="audio">Audio</option>
+                                                        <option value="accesoire">Accesoires</option>
+                                                        <option value="lumiere">Lumières</option>
+                                                    </select>
+
+    <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
+
+    <input type="button" name="Réservations" id="res" value="Réservations" class="stylebt">
+    
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+//On initialise les valeurs de base
+var today = new Date();
+var actualmonth = today.getMonth();
+var actualyear = today.getFullYear();
+//today.setDate(today.getDate()-today.getDate()+1);
+//today.setMonth(today.getMonth()-1);
+console.log(today);
+function init(){
+    var tab_jour=new Array("Lundi","Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche");
+    for($i=0;$i<7;$i++){
+        var e=document.createElement("div");
+        e.setAttribute('class','casej');
+        document.getElementById("calendrier").appendChild(e);
+        e.textContent = tab_jour[$i];
+    }
+    launch();
+}
+function launch(){
+    today.setDate(today.getDate()-today.getDate()+1);
+    //Ajout du nombre de case vide en fonction du jour (0-6) avec Dimanche = 0
+    var njour= today.getDay();
+    if(njour==0)
+    njour=7;
+    njour=njour-1;
+    for(var $i=0; $i<njour; $i++){
+                var e=document.createElement("div");
+              
+                e.setAttribute('class','casei'); //Applique la classe casei qui a une opacité 0
+                document.getElementById("calendrier").appendChild(e);
+    }
+    //On sauvegarde le mois 
+    month= today.getMonth();
+    smonth = today.getMonth();
+    //Création des cases
+    for(var $i=0; month==smonth; $i++){
+         var tab_jour_min=new Array("Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam");
+             nomj=[(tab_jour_min[today.getDay()])];
+            //Création de la div
+
+            var e=document.createElement("div");
+            var d=document.createElement("div");
+            var f=document.createElement("div");
+            e.setAttribute('class','case');
+            d.setAttribute('class','casenj');
+            f.setAttribute('class','casem');
+           
+            e.appendChild(d);
+            e.appendChild(f);
+            document.getElementById("calendrier").appendChild(e);
+
+
+
+           
+
+            //On récupère les infos dans la date
+            day = today.getDate();
+            year= today.getFullYear();
+            //attribution contenu
+           
+           d.textContent = day;
+           f.textContent = nomj;
+           
+            //incrémentation
+            today.setDate(today.getDate()+1);
+            //On récupère le mois
+            month = today.getMonth();
+    }
+    afficherMois();
+}
+function afficherMois() {
+    var tab_mois = new Array("None", "Janvier", "Février", "Mars","Avril","Mai","Juin","Juillet","Aout","Septembre", "Octobre", "Novembre","Décembre");
+    mmonth =  today.getMonth();
+    //Affichage du mois avec des valeurs de 0 à 11, avec Décembre = 0
+    if(mmonth==0)
+        mmonth=12;
+    for(var $i=mmonth; $i==mmonth; $i++){
+        
+        document.getElementById("moisText").innerHTML=tab_mois[$i];
+    }
+    //On affiche les mois et l'année dans la div prévu
+    var aff=mmonth+"/"+year
+    document.getElementById("dateactuel").innerHTML=aff;
+}
+function next(){
+    document.getElementById("calendrier").innerHTML = "";
+    init();
+}
+function previous(){
+    document.getElementById("calendrier").innerHTML = "";
+    today.setMonth(today.getMonth()-2);
+    init();
+}
+function reset(){
+    document.getElementById("calendrier").innerHTML = "";
+    today.setMonth(actualmonth);
+    today.setYear(actualyear);
+    init();
+}
+            
+</script>
+
+<script src="jquery.js"></script>
+<script src="animation_style.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(document).on("click",':radio', function(){
+        $(this).siblings().prop("checked","");
+    });
+    //Affichage du popup
+    $(document).on("click",".case", function(){
+        console.log($(this).children(":first").text());
+        $.post(
+            'calendrier.php',
+            {
+                day: $(this).children($(":first")).text(),
+                month: mmonth,
+                year: year,
+            },
+            function(data, status)
+            {
+                console.log(data);
+                $("#result").html(data);
+            }
+        );
+
+        $(".popup").css({'opacity':'100',"z-index":"3"});
+        $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+        $("#dark").css({'opacity':'0.5',"z-index":"2"});
+    });
+
+    //Fermer
+    $(document).on("click","#fermer", function(){
+
+        $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+        $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+        $("#dark").css({'opacity':'0',"z-index":"-3"}); // retour position initial
+    });
+
+    //Ouverture du popup admin
+    $(document).on("click","#admin", function(){
+        $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+        $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+        $("#dark").css({'opacity':'0.5',"z-index":"2"});
+    });
+
+
+    $(document).on("click","#submit", function(){
+
+        $.post(
+            'ajout_etudiant.php',{
+                nom: $("#nom").val(),
+                prenom: $("#prenom").val(),
+                groupe: $("#groupe").val(),
+                annee: $("#annee").val(),
+
+            },
+            function(data,status)
+            {
+                $("#res_add_etud").html(data);
+            }
+
+        );
+
+    $("#form_etudiant").hide();
+
+        $.post(
+            'recup_matos.php',{
+
+            },
+            function(data,status)
+            {
+                $("#affmateriel").html(data);
+            }
+
+        );
+
+
+    });
+
+
+    $(document).on("click","#submitmatos", function(){
+
+        $("#affmateriel>div>select").each(function(){
+            if($(this).val()!='null'){
+
+                $.post(
+                'ajout_materiel.php',{
+                    quantite_reserver: $(this).val(),
+                    id_materiel: $(this).attr("id"),
+                    id_etudiant: $("#idaff").text(),
+                    nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+                    date_debut: $("#date_debut").val(),
+                    date_retour: $("#date_retour").val(),
+
+                },
+                function(data,status)
+                {
+                    $("#affmateriel").html(data);
+                }
+
+                );
+            }
+        });
+
+    });
+
+
+     
+
+    $(document).on("click","#add_mat",function(){
+            $.post(
+                'add_mat.php',{
+                    designation: $("#add_designation").val(),
+                    categorie: $("#add_categorie").val(),
+                    
+                },
+                function(data,status)
+                {
+                    $(".popup-admin").html(data);
+                }
+
+            );
+
+    });
+
+
+
+    $(document).on("click","#res",function(){
+
+        $.post(
+            'reservations.php',
+        
+            function(data,status)
+            {
+                $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation'>");                         
+            }
+        );  
+
+        $("#form_etudiant").hide();
+
+        $(document).on("click","#annul_res",function(){
+
+        var checked = []
+        $("input[name=check]:checked").each(function ()
+        {
+            checked.push(parseInt($(this).attr("id")));
+        });
+
+
+        console.log(checked);
+           
+        $.post(
+            'annul_reserv.php',{
+                id: checked,
+            
+                
+            },
+            function(data,status)
+            {
+                $("#mat_res").html(data);
+            }
+
+        );
+            
+          
+        
+
+
+    // var idres = $(this).attr("id");
+    // var ischeck = $(this).attr("checked");
+    // $.post(
+    //         'annul_reserv.php',
+    //         {idres: idres, ischeck: ischeck},          
+    //         function(data,status)
+    //         {
+    //             $(document).on("click","#annul_res",function(){
+    //             console.log(idres);        
+    //             });
+    //         }
+    //     );
+
+        });
+    });
+
+    $(document).on("change","#affmateriel select", function(){
+        $.post(
+        'ajout_materiel.php',{
+            quantite_reserver: $(this).val(),
+            id_materiel: $(this).attr("id"),
+            id_etudiant: $("#idaff").text(),
+            nb_mat: $("#affmateriel select[value='1'][value='2'][value='3'][value='4'][value='5'][value='6']  option:selected").val(),
+            date_debut: $("#date_debut").val(),
+            date_retour: $("#date_retour").val(),
+
+        },
+        function(data,status)
+        {
+            $("#popup-admin-result").html(data);
+        }
+
+        );
+    });
+
+});
+</script>
+
+</body>
+</html>
