@@ -10,7 +10,7 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
-$requete="INSERT INTO etudiant (nom, prenom, groupe, annee) VALUES ('".$_POST["nom"]."', '".$_POST["prenom"]."', '".$_POST["groupe"]."', '".$_POST["annee"]."')";
+$requete="INSERT INTO etudiant (nom, groupe) VALUES ('".$_POST["nom"]."', '".$_POST["groupe"]."')";
 $reponse=$id_connex->exec($requete);
 
 $requete="SELECT id_etudiant FROM etudiant ORDER BY id_etudiant DESC LIMIT 1";

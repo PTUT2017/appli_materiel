@@ -34,9 +34,9 @@
                      <label for="nom"><b>Nom: </b></label> <input type="text" name="nom" id="nom" value="">
                  </br></br>
                      <label for="groupe"><b>Groupe: </b></label>
-                     		<input type="radio" name="1A" value="1A" checked="checked">1A
-                     		<input type="radio" name="2A" value="2A">2A
-                     		<input type="radio" name="LP" value="LP">LP
+                     		<input type="radio" id="groupe" name="groupe" value="1A" checked="checked">1A
+                     		<input type="radio" id="groupe" name="groupe" value="2A">2A
+                     		<input type="radio" id="groupe" name="groupe" value="LP">LP
                   </br></br>                                     
                         <input type="button" name="submit" id="submit" value="Valider étudiant">
             </div>
@@ -274,9 +274,10 @@ $(document).ready(function(){
 
 
 
-    $(document).on("click","#testres submit", function(){
+    $(document).on("click","#submitmatos", function(){
 
-        $(document).on("change","#affmateriel select", function(){
+        $("#affmateriel>div>select").each(function(){
+            if($(this).val()!='null'){
 
                     $.post(
                     'ajout_materiel.php',{
@@ -287,14 +288,14 @@ $(document).ready(function(){
                         date_debut: $("#date_debut").val(),
                         date_retour: $("#date_retour").val(),
 
-                    },
-
+                },
                 function(data,status)
                 {
-                    $("#popup-admin-result").html(data);
+                    $("#affmateriel").html(data);
                 }
 
                 );
+            }
         });
 
     });
@@ -324,7 +325,7 @@ $(document).ready(function(){
             
            function(data,status)
                 {
-                    $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation'>");
+                    $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation'></br>");
 
                      
 
@@ -335,79 +336,44 @@ $(document).ready(function(){
  $("#form_etudiant").hide();
 
 
-$(document).on("click","#annul_res",function(){
+// $(document).on("click","#annul_res",function(){
+
+
+// var checked = []
+// $("input[name=check]:checked").each(function ()
+// {
+//     checked.push(parseInt($(this).attr("id")));
+// });
 
 
 
-
-
-var checked = []
-$("input[name=check]:checked").each(function ()
-{
-    checked.push(parseInt($(this).attr("id")));
-});
-
-
-console.log(checked);
-   
- $.post(
-                'annul_reserv.php',{
-                    id: checked,
-                
-                    
-                },
-                function(data,status)
-                {
-                    $("#mat_res").html(data);
-                }
-
-            );
-            
           
         
 
 
-    // var idres = $(this).attr("id");
-    // var ischeck = $(this).attr("checked");
+//         });
+//   });
 
 
-    
+    $(document).on("click","#annul_res", function(){
 
+        $("input[name=check]:checked").each(function(){
+            if($(this).val()!='null'){
 
+                    $.post(
+                    'annul_reserv.php',{
+                       
+                        id: $(this).attr("id"),
+                        
 
+                },
+                
 
-
-
-
-
-
-
-    // $.post(
-    //         'annul_reserv.php',
-    //         {idres: idres, ischeck: ischeck},
-            
-    //     function(data,status)
-    //         {
-
-    //             $(document).on("click","#annul_res",function(){
-
-    //             console.log(idres);        
-
-                   
-
-
-
-    //             });
-    //         }
-
-
-    //     );
-
-
+                );
+            }
         });
-  });
 
-
+    });
 
 
 

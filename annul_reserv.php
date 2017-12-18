@@ -13,12 +13,29 @@ catch (PDOException $e)
 
 
 
-echo json_encode($_POST['id']);
-echo $_POST['id'][0];
 
 
-$requete="DELETE FROM `ptut`.`reserver` WHERE `reserver`.`id_reserver` = ".$_POST['id'][0];
+$string=implode(",", $_POST['id']);
 
 
+$requete="DELETE FROM `ptut`.`reserver` WHERE `reserver`.`id_reserver` IN (".$string.")";
+
+
+
+$reponse=$id_connex->exec($requete);
+
+
+
+
+
+if($reponse!=""){
+    echo "Les résevations ont bien été annulés";
+}
+else{
+
+    echo "Erreur";
+}
+
+$id_connex=null;
 
 ?>
