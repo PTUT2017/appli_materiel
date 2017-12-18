@@ -9,7 +9,7 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
-$requete="INSERT INTO materiel (designation, categorie, quantite_total) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST["quantite_total"]."')";
+$requete="INSERT INTO materiel (designation, categorie) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."')";
 $reponse=$id_connex->exec($requete);
 
 if($reponse!=""){
@@ -23,4 +23,4 @@ else{
 $id_connex=null;
 
 ?>
-<input type="button" name="fermer" value="fermer" id="fermer">
+<input type="button" name="fermer" value="fermer" id="fermer" class="stylebt">
