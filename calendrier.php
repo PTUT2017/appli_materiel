@@ -1,5 +1,5 @@
 <?php
-$caseclick = $_POST["day"]."-".$_POST["month"]."-".$_POST["year"];
+$caseclick = $_POST["year"]."-".$_POST["month"]."-".$_POST["day"];
 echo $caseclick."<br>";
 
 try
@@ -11,23 +11,50 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
+echo "<div class='displaywrap'>";
+echo "<div id='video'>Vidéo";
+
 $requete="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver FROM reserver";
 $reponse=$id_connex->query($requete);
 		while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-					$datetimedebut = new DateTime($ligne['date_debut']);
-					$datetimeretour = new DateTime($ligne['date_retour']);
-					$datetimecase = new DateTime($caseclick);
+				$nb_date_debut=explode("-", $ligne['date_debut']);
+				$nb_date_debut=$nb_date_debut[0].$nb_date_debut[1].$nb_date_debut[2];
 
-					$intervalreserv = $datetimedebut->diff($datetimeretour);
-					echo $intervalreserv->format('%R%a days');
+				$nb_date_retour=explode("-", $ligne['date_retour']);
+				$nb_date_retour=$nb_date_retour[0].$nb_date_retour[1].$nb_date_retour[2];
 
-					$intervalcase_debut = $datetimedebut->diff($datetimecase);
-					echo $intervalcase_debut->format('%R%a days');
+				$nb_date=explode("-", $caseclick);
+				$nb_date=$nb_date[0].$nb_date[1].$nb_date[2];
 
-					$intervalcase_retour = $datetimecase->diff($datetimeretour);
-					echo $intervalcase_retour->format('%R%a days')."<br>";
+				echo $nb_date." ".$nb_date_debut." ".$nb_date_retour."<br>";
+
+				if($nb_date_debut<=$nb_date && $nb_date<=$nb_date_retour){
+								echo "compris<br>";
+								
+								// On affiche le matériel qui a été réserver
+								$requete2="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='video' AND id_materiel='".$ligne['id_materiel']."'";
+								$reponse2=$id_connex->query($requete2);
+								while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+											$qtotal=$ligne2['quantite_total']-$ligne['quantite_reserver'];
+											echo "<br>".$qtotal." ".$ligne2['designation'];
+									}
+
+				}
+				else
+				{
+								// On affiche le matériel qui n'a pas été réserver
+								$requete2="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='video' AND id_materiel!='".$ligne['id_materiel']."'";
+								$reponse2=$id_connex->query($requete2);
+								while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+											echo "<br>".$ligne2['quantite_total']." ".$ligne2['designation'];
+										}
+				}
 
 		}
+
+echo "</div>";
+echo "</div>";
+
 
 
 
