@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 27 Décembre 2017 à 18:08
+-- Généré le :  Mer 27 Décembre 2017 à 18:12
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `ptut`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etudiant`
+--
+
+CREATE TABLE IF NOT EXISTS `etudiant` (
+  `id_etudiant` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  `groupe` text NOT NULL,
+  `annee` text NOT NULL,
+  PRIMARY KEY (`id_etudiant`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -53,6 +68,22 @@ INSERT INTO `materiel` (`id_materiel`, `designation`, `categorie`, `quantite_tot
 (3, 'camera poing', 'video', 6),
 (2, 'camera epaule', 'video', 2),
 (1, 'camera reflex', 'video', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reserver`
+--
+
+CREATE TABLE IF NOT EXISTS `reserver` (
+  `id_materiel` int(11) NOT NULL,
+  `id_etudiant` int(11) NOT NULL,
+  `id_reserver` int(11) NOT NULL AUTO_INCREMENT,
+  `date_debut` date NOT NULL,
+  `date_retour` date NOT NULL,
+  `quantite_reserver` int(11) NOT NULL,
+  PRIMARY KEY (`id_reserver`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
