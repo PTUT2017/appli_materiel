@@ -13,6 +13,11 @@ catch (PDOException $e)
 
 echo "<div>";
 
+$requete1="SELECT * FROM `reserver`";
+$reponse=$id_connex->query($requete1);
+$nb=$reponse->rowCount();
+if ($nb > 0) {
+
 	
 	$requete="SELECT id_reserver, nom, date_debut, date_retour, designation from reserver join etudiant on reserver.id_etudiant=etudiant.id_etudiant join materiel on reserver.id_materiel=materiel.id_materiel";
 	$reponse=$id_connex->query($requete);
@@ -26,6 +31,14 @@ echo "<div>";
 			
 
 		}
+
+}
+
+else{
+	echo "Il n'y a aucune reservation";
+}
+
+
 	echo "</div>";
 
 
