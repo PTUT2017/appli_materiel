@@ -10,10 +10,19 @@ catch (PDOException $e)
 }
 
 
-
+$string=implode(",", $_POST['id']);
 $requete="DELETE FROM `ptut`.`materiel` WHERE `id_materiel` = ".$_POST['id'];
+$reponse=$id_connex->exec($requete);
 echo "ok";
 
+if($reponse!=""){
+    echo "Les résevations ont bien été annulés";
+}
+else{
 
+    echo "Erreur";
+}
+
+$id_connex=null;
 
 ?>
