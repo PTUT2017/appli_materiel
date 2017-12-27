@@ -66,7 +66,7 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 
 echo "</div>";
 
-$requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE categorie='eclairage'";
+$requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE categorie='lumiere'";
 $reponse=$id_connex->query($requete);
 echo "<div id='lumiere'><b>Lumière</b>";
 
