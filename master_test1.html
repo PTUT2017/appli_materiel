@@ -386,6 +386,7 @@ $(document).ready(function(){
         var checked = [];
         $("input[name=check]:checked").each(function ()
         {
+            console.log($(this).attr("id"));
             $.post(
             'suppr_mat.php',{
                 id: $(this).attr("id"),
@@ -394,7 +395,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
-                $("#mat_res").html(data);
+                $("#popup-admin").html(data);
             }
 
         );
