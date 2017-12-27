@@ -86,6 +86,10 @@ h1{
     float: right;
 }
 
+#res{
+    float: right;
+}
+
 
 /*CALENDRIER*/
 @keyframes scan{

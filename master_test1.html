@@ -46,16 +46,15 @@
                             <input type="radio" id="groupe" name="groupe" value="LP">LP
                   </br></br>
         <input type="button" name="submit" id="submit" value="Valider étudiant" class="stylebt">
+        <input type="button" name="Réservations" id="res" value="Consulter Réservations" class="stylebt">
     </div>
     <div id="res_add_etud"></div>
     <div id="mat_res"></div>
-     </br></br>
-         <b>Matériel </b> 
-     </br></br>
      
      <div class="displaywrap" id="affmateriel">
         
      </div>
+
 
 
     <h1>Ajout matériel base de donnée</h1>
@@ -69,8 +68,7 @@
                                                     </select>
     <b>Quantite totale : </b><input type="text" name="quantite_total" id="quantite_total" value="">
     <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
-
-    <input type="button" name="Réservations" id="res" value="Réservations" class="stylebt">
+    <input type="button" name="consult_materiel" id="consult_materiel" value="Consulter Materiel" class="stylebt">
     
 
 </div>
@@ -307,6 +305,18 @@ $(document).ready(function(){
 
     });
 
+    $(document).on("click","#consult_materiel", function(){
+            $.post(
+                'consult_mat.php',{
+                    
+                },
+                function(data,status)
+                {
+                    $(".popup-admin").html(data);
+                }
+
+            );
+    });
 
 
     $(document).on("click","#res",function(){
@@ -316,7 +326,7 @@ $(document).ready(function(){
         
             function(data,status)
             {
-                $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation'>");                         
+                $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation' class='stylebt'>");                         
             }
         );  
 
@@ -365,6 +375,37 @@ $(document).ready(function(){
 
         });
     });
+
+
+
+        $(document).on("click","#suppr_mat",function(){
+
+
+
+
+        var checked = [];
+        $("input[name=check]:checked").each(function ()
+        {
+            $.post(
+            'annul_reserv.php',{
+                id: $(this).attr("id"),
+            
+                
+            },
+            function(data,status)
+            {
+                $("#mat_res").html(data);
+            }
+
+        );
+        });
+
+
+
+           
+            
+
+        });
 
 
 });

@@ -1,5 +1,5 @@
 <?php
-
+echo '<input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt">';
 
 try
 {
@@ -23,65 +23,69 @@ echo "<div id='video'><b>Vidéo</b>";
 
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
-
-            for($i = 1; $i<=$ligne['quantite_total']; $i++){
-                echo "<option value='".$i."'>".$i."</option>";
-            }
-            echo "</select>";
+	echo "<br>".$ligne['quantite_total']." ".$ligne['designation']." "."<input type='checkbox' name='check' id='".$ligne['id_materiel']."'>";
 }
 
 echo "</div>";
+
+
+
+
 
 //Ensuite prochaine catégorie audio
 
 $requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE categorie='son'";
 $reponse=$id_connex->query($requete);
 
-echo "<div id='audio'><b>Audio</b>";
+echo "<br><div id='audio'><b>Audio</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
-
-            for($i = 1; $i<=$ligne['quantite_total']; $i++){
-                echo "<option value='".$i."'>".$i."</option>";
-            }
-            echo "</select>";
+	echo "<br>".$ligne['quantite_total']." ".$ligne['designation']."<input type='checkbox' name='check' id='".$ligne['id_materiel']."'>";
 }
 
 echo "</div>";
+
+
+
+
+
+
 
 $requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE categorie='accessoire'";
 $reponse=$id_connex->query($requete);
 echo "<div id='accesoire'><b>Accesoires</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
-        
-        for($i = 1; $i<=$ligne['quantite_total']; $i++){
-                echo "<option value='".$i."'>".$i."</option>";
-            }
-            echo "</select>";
+	echo "<br>".$ligne['quantite_total']." ".$ligne['designation']."<input type='checkbox' name='check' id='".$ligne['id_materiel']."'>";
 }
 
 echo "</div>";
+
+
+
+
+
+
+
+
 
 $requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE categorie='eclairage'";
 $reponse=$id_connex->query($requete);
 echo "<div id='lumiere'><b>Lumière</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel'].">
-                        <option selected='selected' value='null'>Nombre</option>";
-        for($i = 1; $i<=$ligne['quantite_total']; $i++){
-                echo "<option value='".$i."'>".$i."</option>";
-            }
-            echo "</select>";
+		echo "<br>".$ligne['quantite_total']." ".$ligne['designation']."<input type='checkbox' name='check' id='".$ligne['id_materiel']."'>";
+
 }
 
-echo "<br><input type='submit' id='submitmatos' class='stylebt'>";
+echo "<br><input type='submit' value='Supprimer Materiel' id='suppr_mat' class='stylebt'>";
 
 echo "</div>";
+
+
+
+
+
 
 $reponse->closeCursor();
 $id_connex=null;
