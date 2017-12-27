@@ -55,7 +55,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='video'>Audio";
+echo "<div id='audio'>Audio";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='son'";
@@ -92,7 +92,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='video'>Accessoires";
+echo "<div id='accesoire'>Accessoires";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='accessoire'";
@@ -129,7 +129,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='video'>Lumière";
+echo "<div id='lumiere'>Lumière";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='lumiere'";
