@@ -264,13 +264,14 @@ $(document).ready(function(){
 
         $("#affmateriel>div>select").each(function(){
             if($(this).val()!='null'){
+                console.log("merde");
 
                 $.post(
                 'ajout_materiel.php',{
                     quantite_reserver: $(this).val(),
                     id_materiel: $(this).attr("id"),
                     id_etudiant: $("#idaff").text(),
-                    nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+                    nb_mat: $("#affmateriel select[value='1'][value='2'][value='3'][value='4'][value='5'][value='6']  option:selected").val(),
                     date_debut: $("#date_debut").val(),
                     date_retour: $("#date_retour").val(),
 
@@ -365,24 +366,6 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on("change","#affmateriel select", function(){
-        $.post(
-        'ajout_materiel.php',{
-            quantite_reserver: $(this).val(),
-            id_materiel: $(this).attr("id"),
-            id_etudiant: $("#idaff").text(),
-            nb_mat: $("#affmateriel select[value='1'][value='2'][value='3'][value='4'][value='5'][value='6']  option:selected").val(),
-            date_debut: $("#date_debut").val(),
-            date_retour: $("#date_retour").val(),
-
-        },
-        function(data,status)
-        {
-            $("#popup-admin-result").html(data);
-        }
-
-        );
-    });
 
 });
 </script>
