@@ -17,7 +17,7 @@ echo json_encode($_POST['id']);
 echo $_POST['id'][0];
 
 
-$requete="DELETE FROM `ptut`.`reserver` WHERE `reserver`.`id_reserver` = ".$_POST['id'][0];
+$requete="DELETE FROM `ptut`.`reserver` WHERE `reserver`.`id_reserver` = ".$_POST['id'];
 
 
 
