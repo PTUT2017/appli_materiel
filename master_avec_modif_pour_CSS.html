@@ -46,16 +46,15 @@
                             <input type="radio" id="groupe" name="groupe" value="LP">LP
                   </br></br>
         <input type="button" name="submit" id="submit" value="Valider étudiant" class="stylebt">
+        <input type="button" name="Réservations" id="res" value="Consulter Réservations" class="stylebt">
     </div>
     <div id="res_add_etud"></div>
     <div id="mat_res"></div>
-     </br></br>
-         <b>Matériel </b> 
-     </br></br>
      
      <div class="displaywrap" id="affmateriel">
         
      </div>
+
 
 
     <h1>Ajout matériel base de donnée</h1>
@@ -67,11 +66,10 @@
                                                         <option value="accesoire">Accesoires</option>
                                                         <option value="lumiere">Lumières</option>
                                                     </select>
-
+    <b>Quantite totale : </b><input type="text" name="quantite_total" id="quantite_total" value="">
     <input type="button" name="add_mat" id="add_mat" value="Valider Ajout Matériel" class="stylebt">
+    <input type="button" name="consult_materiel" id="consult_materiel" value="Consulter Materiel" class="stylebt"> 
 
-    <input type="button" name="Réservations" id="res" value="Réservations" class="stylebt">
-    
 
 </div>
 
@@ -190,11 +188,11 @@ $(document).ready(function(){
     });
     //Affichage du popup
     $(document).on("click",".case", function(){
-        console.log("ok");
+        console.log($(this).children(":first").text());
         $.post(
             'calendrier.php',
             {
-                day: $(this).text(),
+                day: $(this).children($(":first")).text(),
                 month: mmonth,
                 year: year,
             },
@@ -260,17 +258,18 @@ $(document).ready(function(){
     });
 
 
-    $(document).on("click","#submitmatos", function(){
+     $(document).on("click","#submitmatos", function(){
 
         $("#affmateriel>div>select").each(function(){
             if($(this).val()!='null'){
+                console.log("merde");
 
                 $.post(
                 'ajout_materiel.php',{
                     quantite_reserver: $(this).val(),
                     id_materiel: $(this).attr("id"),
                     id_etudiant: $("#idaff").text(),
-                    nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
+                    nb_mat: $("#affmateriel select[value='1'][value='2'][value='3'][value='4'][value='5'][value='6']  option:selected").val(),
                     date_debut: $("#date_debut").val(),
                     date_retour: $("#date_retour").val(),
 
@@ -292,6 +291,7 @@ $(document).ready(function(){
     $(document).on("click","#add_mat",function(){
             $.post(
                 'add_mat.php',{
+                    quantite_total: $("#quantite_total").val(),
                     designation: $("#add_designation").val(),
                     categorie: $("#add_categorie").val(),
                     
@@ -305,6 +305,18 @@ $(document).ready(function(){
 
     });
 
+    $(document).on("click","#consult_materiel", function(){
+            $.post(
+                'consult_mat.php',{
+                    
+                },
+                function(data,status)
+                {
+                    $(".popup-admin").html(data);
+                }
+
+            );
+    });
 
 
     $(document).on("click","#res",function(){
@@ -314,7 +326,7 @@ $(document).ready(function(){
         
             function(data,status)
             {
-                $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation'>");                         
+                $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation' class='stylebt'>");                         
             }
         );  
 
@@ -342,10 +354,10 @@ $(document).ready(function(){
                 $("#mat_res").html(data);
             }
 
-        );
-            
-          
+        );          
         
+
+
 
 
     // var idres = $(this).attr("id");
@@ -364,24 +376,38 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on("change","#affmateriel select", function(){
-        $.post(
-        'ajout_materiel.php',{
-            quantite_reserver: $(this).val(),
-            id_materiel: $(this).attr("id"),
-            id_etudiant: $("#idaff").text(),
-            nb_mat: $("#affmateriel select[value='1'][value='2']  option:selected").val(),
-            date_debut: $("#date_debut").val(),
-            date_retour: $("#date_retour").val(),
 
-        },
-        function(data,status)
+
+        $(document).on("click","#suppr_mat",function(){
+
+
+
+
+        var checked = [];
+        $("input[name=check]:checked").each(function ()
         {
-            $("#popup-admin-result").html(data);
-        }
+            console.log($(this).attr("id"));
+            $.post(
+            'suppr_mat.php',{
+                id: $(this).attr("id"),
+            
+                
+            },
+            function(data,status)
+            {
+                $("#popup-admin").html(data);
+            }
 
         );
-    });
+        });
+
+
+
+           
+            
+
+        });
+
 
 });
 </script>
