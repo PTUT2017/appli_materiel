@@ -1,4 +1,5 @@
 body{
+    background-color:#F0F0F0;
     margin: 0px;
     font-family: Verdana;
 }
@@ -8,45 +9,85 @@ body{
     flex-wrap: wrap;
 }
 
+
 /*Date + Bouton*/
 #header{
     position: fixed;
-    z-index: 2;
+    font-size: 75%;
     text-align: center;
-    background-color: yellow;
-    box-shadow: 0 2px 5px rgba(0,0,0,.26);
-    margin-left: 50%;
-
+    color: white   ;
+    background-color: #393939;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    width: 100%;
+    margin:0px;
+    z-index: 2;
 }
 
-#moisText{
+#sshead{
+    display: block;
+    margin: 10px;
 
 }
-#dateactuel{
-
-}
-#b_previousmonth{
+.csslr{ /* les 2 boutons*/
+    color: #00aeb7;
     background-color: white;
     border-radius: 20px;
-    border: 2px solid #00d5e0;
+    border: 2px solid #00aeb7;
     width: 50px;
-    height: 20px;
+    padding : 5px;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0px 4px;
 }
-#b_nextmonth{
-    background-color: white;
-    border-radius: 20px;
-    border: 2px solid #00d5e0;
-    width: 50px;
-    height: 20px;
+.csslr:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
 }
-#resetmonth{
+.csslr:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
 
 }
+.stylebt{
+    font-family: Verdana;
+    color: #00aeb7;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid #00aeb7;
+    padding : 5px;
+    box-shadow: 0px 4px;
+    font-weight: bold;
+
+}
+.stylebt:hover{
+    border: 2px solid #5fd5db;
+    color:#5fd5db;
+}
+.stylebt:active {
+  transform: translate(0px, 4px);
+  box-shadow: 0px 0px;
+}
+
+#admin{
+    position: fixed;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+}
+
+#fermer{
+    float: right;
+}
+
+
+
+
+
 
 /*CALENDRIER*/
 #calendrier{
     position: absolute;
-    margin: 120px 50px;
+    margin: 150px 50px;
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 
 }
@@ -55,7 +96,7 @@ body{
     width: 100%;
     height: 45px;
     padding: 20px;
-    background-color: #00aeb7;
+    background-color: #30BBC2;
     border: solid black 1px;
     padding: 0.5%;
 
@@ -88,4 +129,44 @@ body{
 }
 
 
+/*POPUP*/
+.popup{
+    top: 140px;
+    z-index: -1; /*couche initial*/
+    position: absolute;
+    background-color: #F0F0F0;
+    border: solid #393939 2px;
+    padding: 30px;
+    opacity: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+.popup-admin{
+    top: 140px;
+    z-index: -2; /*couche initial*/
+    position: absolute;
+    background-color: #F0F0F0;
+    border: solid #393939 2px;
+    padding: 30px;
+    opacity: 0;
+    
+}
+#video{
+    padding: 20px 20px;
+}
+#audio{
+    padding: 20px 20px;
+}
+#accesoire{
+    padding: 20px 20px;
+}
+#lumiere{
+    padding: 20px 20px;
+}
 
+
+#choix{
+    border: solid 1px black; 
+    border-radius: 2px;
+    display: wrap;
+
+}
