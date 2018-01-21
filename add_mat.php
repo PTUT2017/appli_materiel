@@ -1,5 +1,12 @@
 <?php
 
+
+$designation = $_POST['designation'];
+$categorie = $_POST['categorie'];
+$quantite_total = $_POST['quantite_total'];
+
+
+
  try
 {
     $id_connex=new PDO('mysql:host=localhost;dbname=ptut','root','',array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -9,10 +16,12 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
-$requete="INSERT INTO materiel (designation, categorie, quantite_total, quantite_restante) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST['quantite_total']."', '".$_POST['quantite_total']."')";
-$reponse=$id_connex->exec($requete);
 
-if($reponse!=""){
+
+$requete = $id_connex->prepare("INSERT INTO materiel (designation, categorie, quantite_total) VALUES (?, ?, ?)");
+$requete->execute(array($designation, $categorie, $quantite_total));
+
+if($requete!=""){
     echo "L'objet a bien été ajouter à la base de donnée";
 }
 else{

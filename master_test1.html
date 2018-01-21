@@ -9,10 +9,24 @@
 </head>
 <body onload="init()">
 
+<div id="ajax-loading">
+            <img class="loader" src="load.svg" alt="Loading" />
+        </div>
+
+<div class="popup">
+
+    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
+    <div id="result">
+
+    </div>
+</div>
 
 <div id="dark"></div> <!-- assombrir lors de l'ouverture popup et popup-admin -->
+
 <div id="container">
     
+
+
     <div id="header">
         <h1><div id="moisText"></div></h1>
         <div id="sshead" class="displaywrap">
@@ -27,10 +41,16 @@
 </div>
 
 <input type="button" name="Administration" id="admin" value="Administration" class="stylebt">
-<div class="popup">
+<!-- <div class="popup">
     <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
-    <div id="result"></div>
-</div>
+    <div id="result">
+
+        <div id="ajax-loading">
+            <img class="loader" src="load.svg" alt="Loading" />
+        </div>
+
+    </div>
+</div> -->
 <div class="popup-admin">
     <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt">
     <fieldset>
@@ -184,11 +204,13 @@ function reset(){
 <script src="animation_style.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+    $('#ajax-loading').hide();
     $(document).on("click",':radio', function(){
         $(this).siblings().prop("checked","");
     });
     //Affichage du popup
     $(document).on("click",".case", function(){
+         $('#ajax-loading').show();
         console.log($(this).children(":first").text());
         $.post(
             'calendrier.php',
@@ -199,8 +221,10 @@ $(document).ready(function(){
             },
             function(data, status)
             {
+                $('#ajax-loading').hide();
                 console.log(data);
                 $("#result").html(data);
+                 
             }
         );
 
@@ -226,17 +250,16 @@ $(document).ready(function(){
 
 
     $(document).on("click","#submit", function(){
-
+          $('#ajax-loading').show();
         $.post(
             'ajout_etudiant.php',{
                 nom: $("#nom").val(),
-                prenom: $("#prenom").val(),
                 groupe: $("#groupe").val(),
-                annee: $("#annee").val(),
 
             },
             function(data,status)
             {
+                  $('#ajax-loading').hide();
                 $("#res_add_etud").html(data);
             }
 
@@ -250,6 +273,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
+                  $('#ajax-loading').hide();
                 $("#affmateriel").html(data);
             }
 
@@ -260,6 +284,7 @@ $(document).ready(function(){
 
 
      $(document).on("click","#submitmatos", function(){
+          $('#ajax-loading').show();
 
         $("#affmateriel>div>select").each(function(){
             if($(this).val()!='null'){
@@ -277,6 +302,7 @@ $(document).ready(function(){
                 },
                 function(data,status)
                 {
+                      $('#ajax-loading').hide();
                     $("#affmateriel").html(data);
                 }
 
@@ -290,6 +316,8 @@ $(document).ready(function(){
      
 
     $(document).on("click","#add_mat",function(){
+          $('#ajax-loading').show();
+
             $.post(
                 'add_mat.php',{
                     quantite_total: $("#quantite_total").val(),
@@ -299,6 +327,7 @@ $(document).ready(function(){
                 },
                 function(data,status)
                 {
+                      $('#ajax-loading').hide();
                     $(".popup-admin").html(data);
                 }
 
@@ -307,12 +336,14 @@ $(document).ready(function(){
     });
 
     $(document).on("click","#consult_materiel", function(){
+          $('#ajax-loading').show();
             $.post(
                 'consult_mat.php',{
                     
                 },
                 function(data,status)
                 {
+                      $('#ajax-loading').hide();
                     $(".popup-admin").html(data);
                 }
 
@@ -321,12 +352,14 @@ $(document).ready(function(){
 
 
     $(document).on("click","#res",function(){
+          $('#ajax-loading').show();
 
         $.post(
             'reservations.php',
         
             function(data,status)
             {
+                  $('#ajax-loading').hide();
                 $("#mat_res").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation' class='stylebt'>");                         
             }
         );  
@@ -334,6 +367,7 @@ $(document).ready(function(){
         $("#form_etudiant").hide();
 
         $(document).on("click","#annul_res",function(){
+              $('#ajax-loading').show();
 
         var checked = []
         $("input[name=check]:checked").each(function ()
@@ -352,6 +386,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
+                  $('#ajax-loading').hide();
                 $("#mat_res").html(data);
             }
 
@@ -360,26 +395,13 @@ $(document).ready(function(){
 
 
 
-
-    // var idres = $(this).attr("id");
-    // var ischeck = $(this).attr("checked");
-    // $.post(
-    //         'annul_reserv.php',
-    //         {idres: idres, ischeck: ischeck},          
-    //         function(data,status)
-    //         {
-    //             $(document).on("click","#annul_res",function(){
-    //             console.log(idres);        
-    //             });
-    //         }
-    //     );
-
         });
     });
 
 
 
         $(document).on("click","#suppr_mat",function(){
+              $('#ajax-loading').show();
 
 
 
@@ -396,6 +418,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
+                  $('#ajax-loading').hide();
                 $("#popup-admin").html(data);
             }
 

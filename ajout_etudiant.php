@@ -1,5 +1,9 @@
 <?php 
 	
+$nom = $_POST['nom'];
+$groupe = $_POST['groupe'];
+
+
 
  try
 {
@@ -10,14 +14,19 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
-$requete="INSERT INTO etudiant (nom, groupe) VALUES ('".$_POST["nom"]."', '".$_POST["groupe"]."')";
-$reponse=$id_connex->exec($requete);
+
+
+$requete = $id_connex->prepare("INSERT INTO etudiant (nom, groupe) VALUES (?, ?)");
+$requete->execute(array($nom, $groupe));
+
+
+
 
 $requete="SELECT id_etudiant FROM etudiant ORDER BY id_etudiant DESC LIMIT 1";
 $reponseid=$id_connex->query($requete);
 
 
-	if($reponse!=""){
+	if($requete!=""){
 	    echo "La réservation a bien été pris en compte, l'id étudiant est de <div id='idaff'>";
 		    while ($ligne = $reponseid-> fetch(PDO::FETCH_ASSOC)){
 		    	echo $ligne['id_etudiant']."</div>";
