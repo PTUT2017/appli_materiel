@@ -1,5 +1,5 @@
 <?php
-echo '<input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt">';
+echo '<input type="button" name="ok" value="retour" id="ok" class="stylebt">';
 
 try
 {

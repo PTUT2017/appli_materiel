@@ -18,6 +18,7 @@ $requete="SELECT designation, id_materiel, quantite_total FROM materiel WHERE ca
 $reponse=$id_connex->query($requete);
 
 
+
 //On met en forme les colonnes
 echo "<div id='video'><b>Vidéo</b>";
 
@@ -25,7 +26,23 @@ echo "<div id='video'><b>Vidéo</b>";
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
 
-            for($i = 1; $i<=$ligne['quantite_total']; $i++){
+    $quantite_total=$ligne['quantite_total'];
+
+// On veut tester si il y à des réservations dans la plage sélectionné et si oui on veut les soustraire
+// Pour cela on teste si champ_debut<champ_reserv_debut et champ_retour>champ_reserv_retour
+// On pourrait réutilisier les explode voir calendrier.php
+
+
+
+
+    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete);
+    while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
+
+
+            for($i = 1; $i<=$quantite_total; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
             }
             echo "</select>";
@@ -41,9 +58,18 @@ $reponse=$id_connex->query($requete);
 echo "<div id='audio'><b>Audio</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+    echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
 
-            for($i = 1; $i<=$ligne['quantite_total']; $i++){
+    $quantite_total=$ligne['quantite_total'];
+
+    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete);
+    while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
+
+
+            for($i = 1; $i<=$quantite_total; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
             }
             echo "</select>";
@@ -56,9 +82,18 @@ $reponse=$id_connex->query($requete);
 echo "<div id='accesoire'><b>Accesoires</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
-        
-        for($i = 1; $i<=$ligne['quantite_total']; $i++){
+    echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+
+    $quantite_total=$ligne['quantite_total'];
+
+    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete);
+    while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
+
+
+            for($i = 1; $i<=$quantite_total; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
             }
             echo "</select>";
@@ -71,9 +106,18 @@ $reponse=$id_connex->query($requete);
 echo "<div id='lumiere'><b>Lumière</b>";
 
 while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
-	echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel'].">
-                        <option selected='selected' value='null'>Nombre</option>";
-        for($i = 1; $i<=$ligne['quantite_total']; $i++){
+    echo "<br>".$ligne['designation']."<select id=".$ligne['id_materiel']."><option selected='selected' value='null' id=".$ligne['id_materiel'].">Nombre</option>";
+
+    $quantite_total=$ligne['quantite_total'];
+
+    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete);
+    while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
+        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
+
+
+            for($i = 1; $i<=$quantite_total; $i++){
                 echo "<option value='".$i."'>".$i."</option>";
             }
             echo "</select>";

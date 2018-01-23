@@ -1,12 +1,5 @@
 <?php
 
-
-$designation = $_POST['designation'];
-$categorie = $_POST['categorie'];
-$quantite_total = $_POST['quantite_total'];
-
-
-
  try
 {
     $id_connex=new PDO('mysql:host=localhost;dbname=ptut','root','',array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -16,20 +9,29 @@ catch (PDOException $e)
     die('Erreur : ' . $e->getMessage());
 }
 
+$reg='#[0-9]#';
+$quantite_total=$_POST['quantite_total'];
 
+if(preg_match($reg, $quantite_total) && isset($_POST['designation'])){
+		$requete="INSERT INTO materiel (designation, categorie, quantite_total) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST['quantite_total']."')";
+		$reponse=$id_connex->exec($requete);
 
-$requete = $id_connex->prepare("INSERT INTO materiel (designation, categorie, quantite_total) VALUES (?, ?, ?)");
-$requete->execute(array($designation, $categorie, $quantite_total));
+		if($reponse!=""){
+		    echo "L'objet a bien été ajouter à la base de donnée";
+		}
+		else{
 
-if($requete!=""){
-    echo "L'objet a bien été ajouter à la base de donnée";
+		    echo "L'ajout à échoué";
+		}
+
+		$id_connex=null;
 }
-else{
-
-    echo "L'ajout à échoué";
+else
+{
+	echo "Champs invalides";
 }
 
-$id_connex=null;
+
 
 ?>
-<input type="button" name="fermer" value="fermer" id="fermer" class="stylebt">
+<input type="button" name="ok" value="retour" id="ok" class="stylebt">

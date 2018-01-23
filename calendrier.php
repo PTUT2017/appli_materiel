@@ -1,12 +1,15 @@
 <?php
 
 $day=$_POST["day"]; 
-
 if($day<=9)
 	$day="0".$day;
 
-$caseclick = $_POST["year"]."-".$_POST["month"]."-".$day;
-echo $caseclick."<br>";
+$month=$_POST["month"]; 
+if($month<=9)
+	$month="0".$month;
+
+$caseclick = $_POST["year"]."-".$month."-".$day;
+echo "<div id='dateclick'>".$caseclick."</div><br>";
 
 try
 {
