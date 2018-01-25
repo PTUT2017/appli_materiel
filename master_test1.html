@@ -229,6 +229,9 @@ $(document).ready(function(){
 
 					        $.post(
 					            'recup_matos.php',{
+					            	
+					            	date_debut: $("#date_debut").val(),
+                    				date_retour: $("#date_retour").val(),
 
 					            },
 					            function(data,status)

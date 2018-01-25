@@ -34,11 +34,36 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 
 
 
-
     $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
-    $reponse2=$id_connex->query($requete);
+    $reponse2=$id_connex->query($requete2);
+    $nb=$reponse2->rowCount();
+
+    if($nb>0){
+
     while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
-        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+                    echo $ligne2['date_debut'];
+
+
+                    //On met en forme la réservation
+                    $nb_date_debut=explode("-", $ligne2['date_debut']);
+                    $nb_date_debut=$nb_date_debut[0].$nb_date_debut[1].$nb_date_debut[2];
+
+                    $nb_date_retour=explode("-", $ligne2['date_retour']);
+                    $nb_date_retour=$nb_date_retour[0].$nb_date_retour[1].$nb_date_retour[2];
+
+                    //On met en forme le champ entrée
+                    $nb_date_debut_champ=explode("-", $_POST['date_debut']);
+                    $nb_date_debut_champ=$nb_date_debut_champ[0].$nb_date_debut_champ[1].$nb_date_debut_champ[2];
+
+                    $nb_date_retour_champ=explode("-", $_POST['date_retour']);
+                    $nb_date_retour_champ=$nb_date_retour_champ[0].$nb_date_retour_champ[1].$nb_date_retour_champ[2];
+
+
+                    echo $nb_date_debut." ".$nb_date_debut_champ." ".$nb_date_retour." ".$nb_date_retour_champ;
+
+                    if($nb_date_debut<=$nb_date_debut_champ && $nb_date_retour>=$nb_date_retour_champ)
+                        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
     }
 
 
@@ -63,9 +88,35 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
     $quantite_total=$ligne['quantite_total'];
 
     $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
-    $reponse2=$id_connex->query($requete);
+    $reponse2=$id_connex->query($requete2);
+    $nb=$reponse2->rowCount();
+
+    if($nb>0){
+
     while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
-        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+                    echo $ligne2['date_debut'];
+
+
+                    //On met en forme la réservation
+                    $nb_date_debut=explode("-", $ligne2['date_debut']);
+                    $nb_date_debut=$nb_date_debut[0].$nb_date_debut[1].$nb_date_debut[2];
+
+                    $nb_date_retour=explode("-", $ligne2['date_retour']);
+                    $nb_date_retour=$nb_date_retour[0].$nb_date_retour[1].$nb_date_retour[2];
+
+                    //On met en forme le champ entrée
+                    $nb_date_debut_champ=explode("-", $_POST['date_debut']);
+                    $nb_date_debut_champ=$nb_date_debut_champ[0].$nb_date_debut_champ[1].$nb_date_debut_champ[2];
+
+                    $nb_date_retour_champ=explode("-", $_POST['date_retour']);
+                    $nb_date_retour_champ=$nb_date_retour_champ[0].$nb_date_retour_champ[1].$nb_date_retour_champ[2];
+
+
+                    echo $nb_date_debut." ".$nb_date_debut_champ." ".$nb_date_retour." ".$nb_date_retour_champ;
+
+                    if($nb_date_debut<=$nb_date_debut_champ && $nb_date_retour>=$nb_date_retour_champ)
+                        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
     }
 
 
@@ -86,10 +137,36 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 
     $quantite_total=$ligne['quantite_total'];
 
-    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
-    $reponse2=$id_connex->query($requete);
+       $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete2);
+    $nb=$reponse2->rowCount();
+
+    if($nb>0){
+
     while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
-        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+                    echo $ligne2['date_debut'];
+
+
+                    //On met en forme la réservation
+                    $nb_date_debut=explode("-", $ligne2['date_debut']);
+                    $nb_date_debut=$nb_date_debut[0].$nb_date_debut[1].$nb_date_debut[2];
+
+                    $nb_date_retour=explode("-", $ligne2['date_retour']);
+                    $nb_date_retour=$nb_date_retour[0].$nb_date_retour[1].$nb_date_retour[2];
+
+                    //On met en forme le champ entrée
+                    $nb_date_debut_champ=explode("-", $_POST['date_debut']);
+                    $nb_date_debut_champ=$nb_date_debut_champ[0].$nb_date_debut_champ[1].$nb_date_debut_champ[2];
+
+                    $nb_date_retour_champ=explode("-", $_POST['date_retour']);
+                    $nb_date_retour_champ=$nb_date_retour_champ[0].$nb_date_retour_champ[1].$nb_date_retour_champ[2];
+
+
+                    echo $nb_date_debut." ".$nb_date_debut_champ." ".$nb_date_retour." ".$nb_date_retour_champ;
+
+                    if($nb_date_debut<=$nb_date_debut_champ && $nb_date_retour>=$nb_date_retour_champ)
+                        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
     }
 
 
@@ -110,10 +187,36 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 
     $quantite_total=$ligne['quantite_total'];
 
-    $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
-    $reponse2=$id_connex->query($requete);
+        $requete2="SELECT id_materiel, id_etudiant, id_reserver, date_debut, date_retour, quantite_reserver  FROM reserver WHERE id_materiel='".$ligne['id_materiel']."'";
+    $reponse2=$id_connex->query($requete2);
+    $nb=$reponse2->rowCount();
+
+    if($nb>0){
+
     while ($ligne2 = $reponse2-> fetch(PDO::FETCH_ASSOC)){
-        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+                    echo $ligne2['date_debut'];
+
+
+                    //On met en forme la réservation
+                    $nb_date_debut=explode("-", $ligne2['date_debut']);
+                    $nb_date_debut=$nb_date_debut[0].$nb_date_debut[1].$nb_date_debut[2];
+
+                    $nb_date_retour=explode("-", $ligne2['date_retour']);
+                    $nb_date_retour=$nb_date_retour[0].$nb_date_retour[1].$nb_date_retour[2];
+
+                    //On met en forme le champ entrée
+                    $nb_date_debut_champ=explode("-", $_POST['date_debut']);
+                    $nb_date_debut_champ=$nb_date_debut_champ[0].$nb_date_debut_champ[1].$nb_date_debut_champ[2];
+
+                    $nb_date_retour_champ=explode("-", $_POST['date_retour']);
+                    $nb_date_retour_champ=$nb_date_retour_champ[0].$nb_date_retour_champ[1].$nb_date_retour_champ[2];
+
+
+                    echo $nb_date_debut." ".$nb_date_debut_champ." ".$nb_date_retour." ".$nb_date_retour_champ;
+
+                    if($nb_date_debut<=$nb_date_debut_champ && $nb_date_retour>=$nb_date_retour_champ)
+                        $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
+    }
     }
 
 
@@ -123,9 +226,9 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
             echo "</select>";
 }
 
-echo "<br><input type='submit' id='submitmatos' class='stylebt'>";
 
 echo "</div>";
+echo "<br><input type='submit' id='submitmatos' class='stylebt'>";
 
 $reponse->closeCursor();
 $id_connex=null;
