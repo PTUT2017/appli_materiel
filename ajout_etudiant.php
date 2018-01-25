@@ -20,7 +20,6 @@ $nom = strtolower($nom);
 $regdate="#^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$#";
 $date_debut=$_POST['date_debut'];
 $date_retour=$_POST['date_retour'];
-echo $date_retour;
 
 if($date_retour!="")
 {

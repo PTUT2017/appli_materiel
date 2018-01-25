@@ -61,7 +61,7 @@ while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 
                     echo $nb_date_debut." ".$nb_date_debut_champ." ".$nb_date_retour." ".$nb_date_retour_champ;
 
-                    if($nb_date_debut<=$nb_date_debut_champ && $nb_date_retour>=$nb_date_retour_champ)
+                    if($nb_date_debut>=$nb_date_debut_champ && $nb_date_retour<=$nb_date_retour_champ)
                         $quantite_total=$quantite_total-$ligne2['quantite_reserver'];
     }
     }
