@@ -13,8 +13,9 @@ $reg='#[0-9]#';
 $quantite_total=$_POST['quantite_total'];
 
 if(preg_match($reg, $quantite_total) && isset($_POST['designation'])){
-		$requete="INSERT INTO materiel (designation, categorie, quantite_total) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST['quantite_total']."')";
-		$reponse=$id_connex->exec($requete);
+
+		$reponse = $id_connex->prepare("INSERT INTO materiel (designation, categorie, quantite_total) VALUES ('".$_POST["designation"]."', '".$_POST["categorie"]."', '".$_POST['quantite_total']."')");
+		$reponse->execute(array('designation'=>$_POST["designation"],'categorie'=>$_POST["categorie"],'quantite_total'=>$_POST['quantite_total']));
 
 		if($reponse!=""){
 		    echo "L'objet a bien été ajouter à la base de donnée";
