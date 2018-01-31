@@ -8,8 +8,9 @@ $month=$_POST["month"];
 if($month<=9)
 	$month="0".$month;
 
-$caseclick = $day."-".$month."-".$_POST["year"];
-echo "<div id='dateclick'><b> Vous consultez le matériel pour le jour du ".$caseclick."</b></div><br>";
+$caseclick =  $_POST["year"]."-".$month."-".$day;
+$caseclickaff = $day."-".$month."-".$_POST["year"];
+echo "<b> Vous consultez le matériel pour le jour du <span id='dateclickaff'>".$caseclickaff."</span><div id='dateclick' style='opacity:0'>".$caseclick."</div></b><br>";
 
 try
 {

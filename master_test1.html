@@ -199,7 +199,7 @@ $(document).ready(function(){
 
         $.post(
             'load_admin.php',{
-            	date: dateclick,
+
             },
             function(data,status)
             {
@@ -210,6 +210,7 @@ $(document).ready(function(){
                $(".popup-admin").html(data);
                console.log(dateclick);
                $("#date_debut").val(dateclick);
+
             }
 
         );
