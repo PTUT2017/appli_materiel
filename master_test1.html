@@ -12,12 +12,22 @@
 <div id="ajax-loading">
         <img class="loader" src="load.svg" alt="Loading" />
 </div>
-<div class="popup">
-    <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
-    <div id="result"></div>
+
+<div id="contain_pop">
+    <div class="popup">
+        <input type="button" name="fermer" value="Fermer" id="fermer" class="stylebt"> 
+        <div id="result"></div>
+    </div>
 </div>
 
+<div id="contain_admin">
+    <div class="popup-admin">
+    </div>
+</div>
+
+
 <div id="dark"></div> <!-- assombrir lors de l'ouverture popup et popup-admin -->
+
 <div id="container">
     
     <div id="header">
@@ -30,13 +40,10 @@
             
         </div>
     </div>
+
     <div id="calendrier" class="displaywrap"></div>
 </div>
 
-
-
-<div class="popup-admin">
-</div>
 
 
 
@@ -163,8 +170,9 @@ $(document).ready(function(){
             },
             function(data, status)
             {
-                $(".popup").css({'opacity':'100',"z-index":"3"});
-                $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+               
+                $("#contain_pop").css({'opacity':'100','z-index':"3"});
+                $("#contain_admin").css({'opacity':'0','z-index':"-2"}); // retour position initial
                 $('#ajax-loading').hide();
                 console.log(data);
                 $("#result").html(data+'<input type="button" name="Administration" id="admin" value="Administration" class="stylebt">');
@@ -177,16 +185,14 @@ $(document).ready(function(){
     //Fermer
     $(document).on("click","#fermer", function(){
 
-        $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
-        $(".popup-admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
+        $("#contain_pop").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+        $("#contain_admin").css({'opacity':'0',"z-index":"-2"}); // retour position initial
         $("#dark").css({'opacity':'0',"z-index":"-3"}); // retour position initial
     });
 
     //Ouverture du popup admin
     $(document).on("click","#admin", function (){
         $('#ajax-loading').show();
-        // $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
-        // $(".popup-admin").css({'opacity':'100',"z-index":"3"});
         $("#dark").css({'opacity':'0.5',"z-index":"2"});
 
         var dateclick = $("#dateclick").html();
@@ -198,8 +204,9 @@ $(document).ready(function(){
             function(data,status)
             {
                 $('#ajax-loading').hide();
-               $(".popup").css({'opacity':'0',"z-index":"-1"}); // retour position initial
-               $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+               $("#contain_pop").css({'opacity':'0',"z-index":"-1"}); // retour position initial
+              
+               $("#contain_admin").css({'opacity':'100','z-index':"3"});
                $(".popup-admin").html(data);
                console.log(dateclick);
                $("#date_debut").val(dateclick);
@@ -215,7 +222,7 @@ $(document).ready(function(){
 
 
     $(document).on("click","#submit", function(){
-        $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+        $("#contain_admin").css({'opacity':'0',"z-index":"3"});
             $('#ajax-loading').show();
 	        $.post(
 	            'ajout_etudiant.php',{
@@ -229,7 +236,7 @@ $(document).ready(function(){
 	            },
 	            function(data,status)
 	            {
-                    $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                    $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                     $('#ajax-loading').hide();
 	                $("#res_add_etud").html(data);
 	                $("#affmateriel").html('<input type="button" name="ok" value="retour" id="ok" class="stylebt">')
@@ -265,7 +272,7 @@ $(document).ready(function(){
 
 
      $(document).on("click","#submitmatos", function(){
-        $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+        $("#contain_admin").css({'opacity':'0',"z-index":"3"});
           $('#ajax-loading').show();
 
 
@@ -285,7 +292,7 @@ $(document).ready(function(){
                 },
                 function(data,status)
                 {
-                    $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                    $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                     $('#ajax-loading').hide();
                     $(".popup-admin").html(data);
                 }
@@ -300,16 +307,16 @@ $(document).ready(function(){
 
 
      $(document).on("click","#ok", function(){
-        $(".popup-admin").css({'opacity':'0',"z-index":"3"});
- $('#ajax-loading').show();
+        $("#contain_admin").css({'opacity':'0',"z-index":"3"});
+        $('#ajax-loading').show();
      		$.post(
             'load_admin.php',{
 
             },
             function(data,status)
             {
-                $(".popup-admin").css({'opacity':'100',"z-index":"3"});
-                 $('#ajax-loading').hide();
+               $("#contain_admin").css({'opacity':'100',"z-index":"3"});
+               $('#ajax-loading').hide();
                $(".popup-admin").html(data);
                console.log($("#dateclick").html());
                $("#date_debut").val($("#dateclick").html());
@@ -323,7 +330,7 @@ $(document).ready(function(){
      
 
     $(document).on("click","#add_mat",function(){
-        $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+        $("#contain_admin").css({'opacity':'0',"z-index":"3"});
          $('#ajax-loading').show();
             $.post(
                 'add_mat.php',{
@@ -334,7 +341,7 @@ $(document).ready(function(){
                 },
                 function(data,status)
                 {
-                    $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                    $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                      $('#ajax-loading').hide();
                     $(".popup-admin").html(data);
                 }
@@ -344,7 +351,7 @@ $(document).ready(function(){
     });
 
     $(document).on("click","#consult_materiel", function(){
-        $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+        $("#contain_admin").css({'opacity':'0',"z-index":"3"});
           $('#ajax-loading').show();
             $.post(
                 'consult_mat.php',{
@@ -352,7 +359,7 @@ $(document).ready(function(){
                 },
                 function(data,status)
                 {
-                    $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                    $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                       $('#ajax-loading').hide();
                     $(".popup-admin").html(data);
                 }
@@ -363,23 +370,23 @@ $(document).ready(function(){
 
     $(document).on("click","#res",function(){
          $('#ajax-loading').show();
-          $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+          $("#contain_admin").css({'opacity':'0',"z-index":"3"});
 
         $.post(
             'reservations.php',
         
             function(data,status)
             {
-                 $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                 $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                  $('#ajax-loading').hide();
-                $(".popup-admin").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation' class='stylebt'> <input type='button' value='fermer' id='fermer' class='stylebt'>");                         
+                 $(".popup-admin").html(data+"<input type='button' name='Annuler une réservation' id='annul_res' value='Annuler une réservation' class='stylebt'> <input type='button' value='fermer' id='fermer' class='stylebt'>");                         
             }
         );  
 
         $("#form_etudiant").hide();
 
         $(document).on("click","#annul_res",function(){
-            $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+            $("#contain_admin").css({'opacity':'0',"z-index":"3"});
              $('#ajax-loading').show();
 
         var checked = []
@@ -399,7 +406,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
-                $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                  $('#ajax-loading').hide();
                 $("#mat_res").html(data);
             }
@@ -418,7 +425,7 @@ $(document).ready(function(){
 
 
         $(document).on("click","#suppr_mat",function(){
-            $(".popup-admin").css({'opacity':'0',"z-index":"3"});
+            $("#contain_admin").css({'opacity':'0',"z-index":"3"});
             $('#ajax-loading').show();
 
 
@@ -435,7 +442,7 @@ $(document).ready(function(){
             },
             function(data,status)
             {
-                $(".popup-admin").css({'opacity':'100',"z-index":"3"});
+                $("#contain_admin").css({'opacity':'100',"z-index":"3"});
                  $('#ajax-loading').hide();
                 $("#popup-admin").html(data);
             }

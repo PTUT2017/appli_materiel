@@ -131,23 +131,22 @@ body{
 
 /*POPUP*/
 .popup{
-    top: 140px;
+  
     z-index: -1; /*couche initial*/
-    position: absolute;
+    margin: auto;
     background-color: #F0F0F0;
     border: solid #393939 2px;
     padding: 30px;
-    opacity: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 .popup-admin{
-    top: 140px;
+    
     z-index: -2; /*couche initial*/
-    position: absolute;
+    margin: auto;
     background-color: #F0F0F0;
     border: solid #393939 2px;
     padding: 30px;
-    opacity: 0;
+    
     
 }
 #video{
@@ -169,4 +168,52 @@ body{
     border-radius: 2px;
     display: wrap;
 
+}
+
+#ajax-loading{
+     z-index: 10;
+     width: 100vw;
+     height: 70vh;
+    position: absolute;
+     display: flex;
+     
+    
+    
+    
+}
+
+.loader{
+    margin: auto;
+
+     
+}
+
+#contain_pop{
+
+     z-index: -1;
+    position: absolute;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+
+
+}
+#contain_admin{
+     z-index: -1;
+    position: absolute;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+}
+
+#dark{
+    margin: -50px 0px 0px -8px;
+    position: absolute;
+    z-index: -3; /*couche initial*/
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }

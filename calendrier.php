@@ -8,8 +8,8 @@ $month=$_POST["month"];
 if($month<=9)
 	$month="0".$month;
 
-$caseclick = $_POST["year"]."-".$month."-".$day;
-echo "<div id='dateclick'>".$caseclick."</div><br>";
+$caseclick = $day."-".$month."-".$_POST["year"];
+echo "<div id='dateclick'><b> Vous consultez le matériel pour le jour du ".$caseclick."</b></div><br>";
 
 try
 {
@@ -21,7 +21,7 @@ catch (PDOException $e)
 }
 
 echo "<div class='displaywrap'>";
-echo "<div id='video'>Vidéo";
+echo "<div id='video'><p class='titre_video'><b>Vidéo</b></p>";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='video'";
@@ -58,7 +58,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='audio'>Audio";
+echo "<div id='audio'><p class='titre_audio'><b>Audio</b></p>";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='son'";
@@ -95,7 +95,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='accesoire'>Accessoires";
+echo "<div id='accesoire'><p class='titre_access'><b>Accessoires</b></p>";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='accessoire'";
@@ -132,7 +132,7 @@ $reponse=$id_connex->query($requete);
 
 echo "</div>";
 
-echo "<div id='lumiere'>Lumière";
+echo "<div id='lumiere'><p class='titre_lumi'><b>Lumière</b></p>";
 
 
 $requete="SELECT designation, quantite_total, id_materiel FROM materiel WHERE categorie='lumiere'";

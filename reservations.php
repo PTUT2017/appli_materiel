@@ -11,7 +11,7 @@ catch (PDOException $e)
 }
 
 
-echo "<div>";
+echo "<div id='contain_reserv'><b> Cochez une ou plusieurs case(s) pour supprimer une ou des réservation(s)</b>";
 
 $requete1="SELECT * FROM `reserver`";
 $reponse=$id_connex->query($requete1);
@@ -19,13 +19,13 @@ $nb=$reponse->rowCount();
 if ($nb > 0) {
 
 	
-	$requete="SELECT id_reserver, nom, date_debut, date_retour, designation from reserver join etudiant on reserver.id_etudiant=etudiant.id_etudiant join materiel on reserver.id_materiel=materiel.id_materiel";
+	$requete="SELECT id_reserver, nom, date_debut, date_retour, designation from reserver join etudiant on reserver.id_etudiant=etudiant.id_etudiant join materiel on reserver.id_materiel=materiel.id_materiel ORDER BY date_debut";
 	$reponse=$id_connex->query($requete);
 
 		while ($ligne = $reponse-> fetch(PDO::FETCH_ASSOC)){
 		
 				
-			echo "<br>".$ligne['nom']." du ".$ligne['date_debut']." au ".$ligne['date_retour']." ".$ligne['designation']."<input type='checkbox' name='check' id='".$ligne['id_reserver']."'><br>";
+			echo "<div class='reserv'>".$ligne['nom']." a réservé du <b>".$ligne['date_debut']."</b> au <b>".$ligne['date_retour']."</b> : ".$ligne['designation']."<input type='checkbox' name='check' id='".$ligne['id_reserver']."'><br></div>";
 
 
 			
@@ -35,7 +35,7 @@ if ($nb > 0) {
 }
 
 else{
-	echo "Il n'y a aucune reservation";
+	echo "Il n'y a aucune reservation pour le moment";
 }
 
 
